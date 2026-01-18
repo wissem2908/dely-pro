@@ -70,8 +70,8 @@
             <div class="position-absolute bg-dark" style="left: 0; top: 0; width: 100%; height: 100%;">
             </div>
             <div class="container px-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4">
-                    <a href="index.html" class="navbar-brand p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-white py-6 px-4">
+                    <a href="index.php" class="navbar-brand p-0">
                      
                         <img src="assets/images/delypro-logo.jpg" alt="Logo" width="150" height="50">
                     </a>
@@ -80,11 +80,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Accueil</a>
-                            <a href="about.html" class="nav-item nav-link">À Propos</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="project.html" class="nav-item nav-link">Projets</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="index.php" class="nav-item nav-link active">Accueil</a>
+                            <a href="#about" class="nav-item nav-link">À Propos</a>
+                            <a href="#service" class="nav-item nav-link">Services</a>
+                            <a href="#projet" class="nav-item nav-link">Projets</a>
+                            <a href="#contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">
                             <a href="https://htmlcodex.com/downloading/?item=3338" class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Buy Pro Version</a>

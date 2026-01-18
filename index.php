@@ -1,53 +1,86 @@
 <?php include 'includes/header.php'; ?>
         <!-- Carousel Start -->
-        <div class="header-carousel owl-carousel">
-            <div class="header-carousel-item">
-                <div class="header-carousel-item-img-1">
-                    <img src="img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
-                </div>
-                <div class="carousel-caption">
-                    <div class="carousel-caption-inner text-start p-3">
-                        <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">The most prestigious Investments company in worldwide.</h1>
-                        <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Apply Now</a>
-                        <a class="btn btn-dark rounded-pill py-3 px-5 mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="header-carousel-item mx-auto">
-                <div class="header-carousel-item-img-2">
-                    <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image">
-                </div>
-                <div class="carousel-caption">
-                    <div class="carousel-caption-inner text-center p-3">
-                        <h1 class="display-1 text-capitalize text-white mb-4">The most prestigious Investments company in worldwide.</h1>
-                        <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4" href="#">Apply Now</a>
-                        <a class="btn btn-dark rounded-pill py-3 px-5 mb-4" href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="header-carousel-item">
-                <div class="header-carousel-item-img-3">
-                    <img src="img/carousel-3.jpg" class="img-fluid w-100" alt="Image">
-                </div>
-                <div class="carousel-caption">
-                    <div class="carousel-caption-inner text-end p-3">
-                        <h1 class="display-1 text-capitalize text-white mb-4">The most prestigious Investments company in worldwide.</h1>
-                        <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4" href="#">Apply Now</a>
-                        <a class="btn btn-dark rounded-pill py-3 px-5 mb-4" href="#">Read More</a>
-                    </div>
-                </div>
+     <div class="header-carousel owl-carousel">
+
+    <!-- Slide 1 -->
+    <div class="header-carousel-item">
+        <div class="header-carousel-item-img-1">
+            <img src="img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
+        </div>
+        <div class="carousel-caption">
+            <div class="carousel-caption-inner text-start p-3">
+                <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                    data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">
+                    Des solutions professionnelles au service de votre performance
+                </h1>
+                <p class="mb-5 fs-5 fadeInUp animate__animated"
+                   data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">
+                    Nous accompagnons les entreprises avec des solutions fiables, innovantes et adaptées à leurs besoins industriels et techniques.
+                </p>
+                <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated"
+                   data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
+                    Nos services
+                </a>
+                <a class="btn btn-dark rounded-pill py-3 px-5 mb-4 fadeInUp animate__animated"
+                   data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
+                    À propos
+                </a>
             </div>
         </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="header-carousel-item mx-auto">
+        <div class="header-carousel-item-img-2">
+            <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image">
+        </div>
+        <div class="carousel-caption">
+            <div class="carousel-caption-inner text-center p-3">
+                <h1 class="display-1 text-capitalize text-white mb-4">
+                    Expertise, qualité et engagement durable
+                </h1>
+                <p class="mb-5 fs-5">
+                    Grâce à notre savoir-faire et à une équipe qualifiée, nous garantissons des prestations conformes aux standards les plus exigeants.
+                </p>
+                <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4" href="#">
+                    Découvrir
+                </a>
+                <a class="btn btn-dark rounded-pill py-3 px-5 mb-4" href="#">
+                    Nos réalisations
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="header-carousel-item">
+        <div class="header-carousel-item-img-3">
+            <img src="img/carousel-3.jpg" class="img-fluid w-100" alt="Image">
+        </div>
+        <div class="carousel-caption">
+            <div class="carousel-caption-inner text-end p-3">
+                <h1 class="display-1 text-capitalize text-white mb-4">
+                    Un partenaire de confiance pour vos projets
+                </h1>
+                <p class="mb-5 fs-5">
+                    De l’étude à la réalisation, nous vous accompagnons avec rigueur, transparence et professionnalisme.
+                </p>
+                <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4" href="#">
+                    Contactez-nous
+                </a>
+                <a class="btn btn-dark rounded-pill py-3 px-5 mb-4" href="#">
+                    Demander un devis
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
         <!-- Carousel End -->
 
 <!-- About Start -->
-<div class="container-fluid about bg-light py-5">
+<div class="container-fluid about bg-light py-5"  id="about"> >
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             
@@ -156,7 +189,7 @@
 
 
         <!-- Services Start -->
-   <div class="container-fluid service py-5">
+   <div class="container-fluid service py-5" id="service">
     <div class="container py-5">
 
         <!-- Section title -->
@@ -243,6 +276,7 @@
                                 Suivi et réalisation
                             </h4>
                             <p class="mb-4">
+                                <br>
                                 Pilotage, suivi technique et administratif des projets afin de garantir
                                 leur conformité aux normes en vigueur.
                             </p>
@@ -252,11 +286,11 @@
             </div>
 
             <!-- Button -->
-            <div class="col-12">
+            <!-- <div class="col-12">
                 <a class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="projects.html">
                     Découvrir nos projets
                 </a>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -266,146 +300,248 @@
 
 
         <!-- Project Start -->
-        <div class="container-fluid project">
-            <div class="container">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h4 class="text-primary">Our Projects</h4>
-                    <h1 class="display-4">Explore Our Latest Projects</h1>
+    <div class="container-fluid project py-5" id="projet">
+    <div class="container">
+
+        <!-- Section title -->
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h4 class="text-primary">Nos projets</h4>
+            <h1 class="display-4">Programmes immobiliers par localisation</h1>
+        </div>
+
+        <div class="project-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+
+            <!-- Project 1 -->
+            <div class="project-item h-100">
+                <div class="project-img">
+                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="9 logements de standing">
                 </div>
-                <div class="project-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="project-item h-100 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="project-img">
-                            <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                <div class="project-content bg-light rounded p-4">
+                    <div class="project-content-inner">
+                        <div class="project-icon mb-3">
+                            <i class="fas fa-building fa-4x text-primary"></i>
                         </div>
-                        <div class="project-content bg-light rounded p-4">
-                            <div class="project-content-inner">
-                                <div class="project-icon mb-3"><i class="fas fa-chart-line fa-4x text-primary"></i></div>
-                                <p class="text-dark fs-5 mb-3">Business Growth</p>
-                                <a href="#" class="h4">Business Strategy And Investment Planning Growth Consulting</a>
-                                <div class="pt-4">
-                                    <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-item h-100 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="project-img">
-                            <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="Image">
-                        </div>
-                        <div class="project-content bg-light rounded p-4">
-                            <div class="project-content-inner">
-                                <div class="project-icon mb-3"><i class="fas fa-signal fa-4x text-primary"></i></div>
-                                <p class="text-dark fs-5 mb-3">Marketing Strategy</p>
-                                <a href="#" class="h4">Product Sailing Marketing Strategy For Improve Business</a>
-                                <div class="pt-4">
-                                    <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-item h-100">
-                        <div class="project-img">
-                            <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="Image">
-                        </div>
-                        <div class="project-content bg-light rounded p-4">
-                            <div class="project-content-inner">
-                                <div class="project-icon mb-3"><i class="fas fa-signal fa-4x text-primary"></i></div>
-                                <p class="text-dark fs-5 mb-3">Marketing Strategy</p>
-                                <a href="#" class="h4">Product Sailing Marketing Strategy For Improve Business</a>
-                                <div class="pt-4">
-                                    <a class="btn btn-light rounded-pill py-3 px-5" href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-dark fs-5 mb-2">Beni Messous</p>
+                        <h4 class="mb-3">9 logements de standing avec parking</h4>
+                        <p class="mb-3">
+                            Résidence de standing avec logements modernes et parking dédié.
+                        </p>
+                        <span class="badge bg-success">Projet achevé et livré</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Project 2 -->
+            <div class="project-item h-100">
+                <div class="project-img">
+                    <img src="img/projects-2.jpg" class="img-fluid w-100 rounded" alt="47 logements promotionnels">
+                </div>
+                <div class="project-content bg-light rounded p-4">
+                    <div class="project-content-inner">
+                        <div class="project-icon mb-3">
+                            <i class="fas fa-home fa-4x text-primary"></i>
+                        </div>
+                        <p class="text-dark fs-5 mb-2">Reghaïa</p>
+                        <h4 class="mb-3">47 logements promotionnels</h4>
+                        <p class="mb-3">
+                            Programme conçu selon les normes de confort et de sécurité.
+                        </p>
+                        <span class="badge bg-success">Projet achevé et livré</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-item h-100">
+                <div class="project-img">
+                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="19 logements avec commerces">
+                </div>
+                <div class="project-content bg-light rounded p-4">
+                    <div class="project-content-inner">
+                        <div class="project-icon mb-3">
+                            <i class="fas fa-city fa-4x text-primary"></i>
+                        </div>
+                        <p class="text-dark fs-5 mb-2">Reghaïa</p>
+                        <h4 class="mb-3">19 logements avec commerces et parking</h4>
+                        <p class="mb-3">
+                            Logements promotionnels avec commerces en rez-de-chaussée
+                            et parking en sous-sol.
+                        </p>
+                        <span class="badge bg-success">Projet achevé et livré</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-item h-100">
+                <div class="project-img">
+                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="Résidence Scolaria">
+                </div>
+                <div class="project-content bg-light rounded p-4">
+                    <div class="project-content-inner">
+                        <div class="project-icon mb-3">
+                            <i class="fas fa-building fa-4x text-primary"></i>
+                        </div>
+                        <p class="text-dark fs-5 mb-2">Bab Ezzouar</p>
+                        <h4 class="mb-3">Résidence Scolaria – 54 logements</h4>
+                        <p class="mb-3">
+                            Résidence à usage résidentiel et commercial avec parking
+                            et 8 locaux commerciaux.
+                        </p>
+                        <span class="badge bg-warning text-dark">Projet en cours de réalisation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-item h-100">
+                <div class="project-img">
+                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="30 logements promotionnels">
+                </div>
+                <div class="project-content bg-light rounded p-4">
+                    <div class="project-content-inner">
+                        <div class="project-icon mb-3">
+                            <i class="fas fa-layer-group fa-4x text-primary"></i>
+                        </div>
+                        <p class="text-dark fs-5 mb-2">Reghaïa</p>
+                        <h4 class="mb-3">30 logements promotionnels avec commerces</h4>
+                        <p class="mb-3">
+                            Immeuble R+5 avec attiques, parking à deux sous-sols
+                            et 8 locaux commerciaux.
+                        </p>
+                        <span class="badge bg-secondary">Projet à venir</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
+</div>
+
         <!-- Project End -->
 
 
         <!-- Contact Start -->
-        <div class="container-fluid contact py-5">
-            <div class="container pb-5">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
-                        <div class="contact-item">
-                            <div class="pb-5">
-                                <h4 class="text-primary">Contactez Nous</h4>
-                                <h1 class="display-4 mb-4">Get In Touch With Us</h1>
-                                <h4 class="lh-base mb-0">Receive messages instantly with our PHP and Ajax contact form - available in the <a href="https://htmlcodex.com/downloading/?item=3338">Pro Version</a> only.</h4>
-                            </div>
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary btn-lg-square rounded-circle p-4"><i class="fa fa-home text-white"></i></div>
-                                <div class="ms-4">
-                                    <h4>Addresses</h4>
-                                    <p class="mb-0">123 ranking Street, New York, USA</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary btn-lg-square rounded-circle p-2"><i class="fa fa-phone-alt text-white"></i></div>
-                                <div class="ms-4">
-                                    <h4>Mobile</h4>
-                                    <p class="mb-0">+012 345 67890</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mb-0">
-                                <div class="bg-primary btn-lg-square rounded-circle p-2"><i class="fa fa-envelope-open text-white"></i></div>
-                                <div class="ms-4">
-                                    <h4>Email</h4>
-                                    <p class="mb-0">info@example.com</p>
-                                </div>
-                            </div>
+ <div class="container-fluid contact py-5" id="contact">
+    <div class="container pb-5">
+        <div class="row g-5">
+            
+            <!-- Contact Information -->
+            <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+                <div class="contact-item">
+                    <div class="pb-5">
+                        <h4 class="text-primary">Contactez-nous</h4>
+                        <h1 class="display-4 mb-4">Restons en contact</h1>
+                        <p class="lh-base mb-0">
+                            N’hésitez pas à nous contacter pour toute information, demande de devis ou collaboration.
+                        </p>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary btn-lg-square rounded-circle p-4">
+                            <i class="fa fa-map-marker-alt text-white"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h4>Adresse</h4>
+                            <p class="mb-0">
+                                Lotissement Saidoune CADAT BT B, N14,<br>
+                                Section 60, Ilot 70, Ben Omar,<br>
+                                Kouba, Alger
+                            </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Votre Nom">
-                                        <label for="name">Votre Nom</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Votre Email">
-                                        <label for="email">Votre Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="phone" class="form-control" id="phone" placeholder="Votre Téléphone">
-                                        <label for="phone">Votre Téléphone</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="project" placeholder="Votre Projet">
-                                        <label for="project">Votre Projet</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Sujet">
-                                        <label for="subject">Sujet</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3">Envoyer Message</button>
-                                </div>
-                            </div>
-                        </form>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary btn-lg-square rounded-circle p-4">
+                            <i class="fa fa-phone-alt text-white"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h4>Téléphone</h4>
+                            <p class="mb-0">+213 (0) 773 66 89 29</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary btn-lg-square rounded-circle p-4">
+                            <i class="fa fa-fax text-white"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h4>Fax</h4>
+                            <p class="mb-0">+213 (0) 28 46 66 83</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary btn-lg-square rounded-circle p-4">
+                            <i class="fa fa-envelope-open text-white"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h4>Email</h4>
+                            <p class="mb-0">dg.delypro@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+                <form>
+                    <div class="row g-3" style='margin-top:113px'>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" placeholder="Votre nom">
+                                <label for="name">Votre nom</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Votre email">
+                                <label for="email">Votre email</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="tel" class="form-control" id="phone" placeholder="Téléphone">
+                                <label for="phone">Téléphone</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="project" placeholder="Projet">
+                                <label for="project">Projet</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="subject" placeholder="Sujet">
+                                <label for="subject">Sujet</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" placeholder="Message" style="height: 160px"></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary w-100 py-3">
+                                Envoyer le message
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         </div>
+    </div>
+</div>
+
         <!-- Contact End -->
 
 <?php include 'includes/footer.php'; ?>
