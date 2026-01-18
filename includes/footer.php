@@ -1,6 +1,6 @@
 
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <!-- <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-6 col-xl-3">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Footer End -->
 
         
@@ -70,13 +70,9 @@
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-primary"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                        <span class="text-body"><a href="https://anurb.dz" class="border-bottom text-primary" target="_blank"><i class="fas fa-copyright text-light me-2"></i>anurb.dz</a>, Tous droits réservés.</span>
                     </div>
-                    <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/*** The author’s attribution link must remain intact in the template. ***/-->
-                        <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                        Designed By <a class="border-bottom text-primary" href="https://htmlcodex.com">HTML Codex</a>
-                    </div>
+                  
                 </div>
             </div>
         </div>
