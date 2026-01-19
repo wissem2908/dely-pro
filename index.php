@@ -1,6 +1,6 @@
 <?php include 'includes/header.php'; ?>
-        <!-- Carousel Start -->
-     <div class="header-carousel owl-carousel">
+<!-- Carousel Start -->
+<div class="header-carousel owl-carousel">
 
     <!-- Slide 1 -->
     <div class="header-carousel-item">
@@ -14,15 +14,15 @@
                     Des solutions professionnelles au service de votre performance
                 </h1>
                 <p class="mb-5 fs-5 fadeInUp animate__animated"
-                   data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">
+                    data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">
                     Nous accompagnons les entreprises avec des solutions fiables, innovantes et adaptées à leurs besoins industriels et techniques.
                 </p>
                 <a class="btn btn-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated"
-                   data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
+                    data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
                     Nos services
                 </a>
                 <a class="btn btn-dark rounded-pill py-3 px-5 mb-4 fadeInUp animate__animated"
-                   data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
+                    data-animation="fadeInUp" data-delay="1.7s" style="animation-delay: 1.7s;" href="#">
                     À propos
                 </a>
             </div>
@@ -77,13 +77,13 @@
 
 </div>
 
-        <!-- Carousel End -->
+<!-- Carousel End -->
 
 <!-- About Start -->
-<div class="container-fluid about bg-light py-5"  id="about"> >
+<div class="container-fluid about bg-light py-5" id="about"> >
     <div class="container py-5">
         <div class="row g-5 align-items-center">
-            
+
             <!-- Images -->
             <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="about-img">
@@ -94,20 +94,20 @@
 
             <!-- Content -->
             <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
-                
+
                 <h4 class="text-primary">À propos</h4>
                 <h1 class="display-5 mb-4">
-                    EPE-DELYPRO-SPA  
+                    EPE-DELYPRO-SPA
                 </h1>
 
                 <p class="ps-4 mb-4">
-                    EPE-DELYPRO-SPA est une Entreprise Publique Économique constituée sous forme de Société par Actions (SPA), 
-                    créée en 2004. Elle dispose d’un capital social de <strong>762 000 000,00 DA</strong> et est détenue à 
+                    EPE-DELYPRO-SPA est une Entreprise Publique Économique constituée sous forme de Société par Actions (SPA),
+                    créée en 2004. Elle dispose d’un capital social de <strong>762 000 000,00 DA</strong> et est détenue à
                     <strong>100 % par le CNERU</strong>, son actionnaire unique.
                 </p>
 
                 <p class="ps-4 mb-4">
-                    Par son statut public, l’entreprise inscrit son action dans une démarche d’intérêt général, 
+                    Par son statut public, l’entreprise inscrit son action dans une démarche d’intérêt général,
                     orientée vers le développement urbain et immobilier durable.
                 </p>
 
@@ -188,8 +188,8 @@
 
 
 
-        <!-- Services Start -->
-   <div class="container-fluid service py-5" id="service">
+<!-- Services Start -->
+<div class="container-fluid service py-5" id="service">
     <div class="container py-5">
 
         <!-- Section title -->
@@ -296,11 +296,11 @@
     </div>
 </div>
 
-        <!-- Services End -->
+<!-- Services End -->
 
 
-        <!-- Project Start -->
-    <div class="container-fluid project py-5" id="projet">
+<!-- Project Start -->
+<div class="container-fluid project py-5" id="projet">
     <div class="container">
 
         <!-- Section title -->
@@ -418,14 +418,14 @@
     </div>
 </div>
 
-        <!-- Project End -->
+<!-- Project End -->
 
 
-        <!-- Contact Start -->
- <div class="container-fluid contact py-5" id="contact">
+<!-- Contact Start -->
+<div class="container-fluid contact py-5" id="contact">
     <div class="container pb-5">
         <div class="row g-5">
-            
+
             <!-- Contact Information -->
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="contact-item">
@@ -485,47 +485,48 @@
 
             <!-- Contact Form -->
             <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
-                <form>
-                    <div class="row g-3" style='margin-top:113px'>
+                <form id="contactForm">
+                    <div class="row g-3" style="margin-top:113px">
+
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Votre nom">
-                                <label for="name">Votre nom</label>
+                                <input type="text" class="form-control" name="name" placeholder="Votre nom" required>
+                                <label>Votre nom</label>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Votre email">
-                                <label for="email">Votre email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Votre email" required>
+                                <label>Votre email</label>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="tel" class="form-control" id="phone" placeholder="Téléphone">
-                                <label for="phone">Téléphone</label>
+                                <input type="tel" class="form-control" name="phone" placeholder="Téléphone">
+                                <label>Téléphone</label>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="project" placeholder="Projet">
-                                <label for="project">Projet</label>
+                                <input type="text" class="form-control" name="project" placeholder="Projet">
+                                <label>Projet</label>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Sujet">
-                                <label for="subject">Sujet</label>
+                                <input type="text" class="form-control" name="subject" placeholder="Sujet" required>
+                                <label>Sujet</label>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" id="message" placeholder="Message" style="height: 160px"></textarea>
-                                <label for="message">Message</label>
+                                <textarea class="form-control" name="message" placeholder="Message" style="height:160px" required></textarea>
+                                <label>Message</label>
                             </div>
                         </div>
 
@@ -534,14 +535,55 @@
                                 Envoyer le message
                             </button>
                         </div>
+
+                        <div class="col-12">
+                            <div id="formResponse" class="mt-3"></div>
+                        </div>
+
                     </div>
                 </form>
             </div>
+
 
         </div>
     </div>
 </div>
 
-        <!-- Contact End -->
+<!-- Contact End -->
 
 <?php include 'includes/footer.php'; ?>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(function () {
+
+    $('#contactForm').on('submit', function (e) {
+        e.preventDefault();
+
+        let form = $(this);
+
+        $.ajax({
+            url: 'assets/php/send_mail.php',
+            type: 'POST',
+            data: form.serialize(),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#formResponse').html('<div class="text-info">Envoi en cours...</div>');
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    $('#formResponse').html('<div class="text-success">' + response.message + '</div>');
+                    form[0].reset();
+                } else {
+                    $('#formResponse').html('<div class="text-danger">' + response.message + '</div>');
+                }
+            },
+            error: function () {
+                $('#formResponse').html('<div class="text-danger">Erreur serveur. Veuillez réessayer.</div>');
+            }
+        });
+    });
+
+});
+</script>
