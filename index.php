@@ -5,7 +5,7 @@
     <!-- Slide 1 -->
     <div class="header-carousel-item">
         <div class="header-carousel-item-img-1">
-            <img src="img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
+            <img src="assets/images/img01.jpg" class="img-fluid w-100" alt="Image">
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-start p-3">
@@ -32,7 +32,7 @@
     <!-- Slide 2 -->
     <div class="header-carousel-item mx-auto">
         <div class="header-carousel-item-img-2">
-            <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image">
+            <img src="assets/images/img02.jpg" class="img-fluid w-100" alt="Image">
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-center p-3">
@@ -55,7 +55,7 @@
     <!-- Slide 3 -->
     <div class="header-carousel-item">
         <div class="header-carousel-item-img-3">
-            <img src="img/carousel-3.jpg" class="img-fluid w-100" alt="Image">
+            <img src="assets/images/img01.jpg" class="img-fluid w-100" alt="Image">
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-end p-3">
@@ -87,8 +87,8 @@
             <!-- Images -->
             <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="about-img">
-                    <img src="img/about-3.png" class="img-fluid w-100 rounded-top bg-white" alt="EPE DELYPRO SPA">
-                    <img src="img/about-2.jpg" class="img-fluid w-100 rounded-bottom" alt="Promotion immobilière">
+                    <img src="assets/images/img01.jpg" class="img-fluid w-100 rounded-top bg-white" alt="EPE DELYPRO SPA">
+                    <img src="assets/images/img02.jpg" class="img-fluid w-100 rounded-bottom" alt="Promotion immobilière">
                 </div>
             </div>
 
@@ -314,7 +314,7 @@
             <!-- Project 1 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="9 logements de standing">
+                    <img src="assets/images/img01.jpg" class="img-fluid w-100 rounded" alt="9 logements de standing">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -334,7 +334,7 @@
             <!-- Project 2 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="img/projects-2.jpg" class="img-fluid w-100 rounded" alt="47 logements promotionnels">
+                    <img src="assets/images/img02.jpg" class="img-fluid w-100 rounded" alt="47 logements promotionnels">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -354,7 +354,7 @@
             <!-- Project 3 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="19 logements avec commerces">
+                    <img src="assets/images/img01.jpg" class="img-fluid w-100 rounded" alt="19 logements avec commerces">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -375,7 +375,7 @@
             <!-- Project 4 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="Résidence Scolaria">
+                    <img src="assets/images/img02.jpg" class="img-fluid w-100 rounded" alt="Résidence Scolaria">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -396,7 +396,7 @@
             <!-- Project 5 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="img/projects-1.jpg" class="img-fluid w-100 rounded" alt="30 logements promotionnels">
+                    <img src="assets/images/img05.jpg" class="img-fluid w-100 rounded" alt="30 logements promotionnels">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -419,6 +419,74 @@
 </div>
 
 <!-- Project End -->
+<!-- Actualités Start -->
+<div class="container-fluid news py-5" id="news">
+    <div class="container">
+
+        <!-- Section Title -->
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h4 class="text-primary">Actualités</h4>
+            <h1 class="display-4">Nos dernières nouvelles et articles</h1>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- News Item 1 -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="news-item bg-light rounded overflow-hidden">
+                    <div class="news-img">
+                        <img src="assets/images/img01.jpg" class="img-fluid w-100" alt="Actualité 1">
+                    </div>
+                    <div class="news-content p-4">
+                        <h5 class="mb-2">Appels d’offres</h5>
+                        <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>19 Janvier 2026</p>
+                        <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum lacus risus, at ultricies ma.</p>
+                        <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Item 2 -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="news-item bg-light rounded overflow-hidden">
+                    <div class="news-img">
+                        <img src="assets/images/img02.jpg" class="img-fluid w-100" alt="Actualité 2">
+                    </div>
+                    <div class="news-content p-4">
+                        <h5 class="mb-2">Avis de consultation</h5>
+                        <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>15 Janvier 2026</p>
+                        <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum lacus risus, at ultricies ma</p>
+                        <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Item 3 -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="news-item bg-light rounded overflow-hidden">
+                    <div class="news-img">
+                        <img src="assets/images/img01.jpg" class="img-fluid w-100" alt="Actualité 3">
+                    </div>
+                    <div class="news-content p-4">
+                        <h5 class="mb-2">Annonces liées aux projets et aux programmes de logements.</h5>
+                        <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>10 Janvier 2026</p>
+                        <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum lacus risus, at ultricies ma</p>
+                        <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Button -->
+        <div class="text-center mt-5">
+            <a href="news.html" class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s">
+                Voir toutes les actualités
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Actualités End -->
 
 
 <!-- Contact Start -->
