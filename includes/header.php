@@ -115,7 +115,7 @@
                         <a href="#service" class="nav-item nav-link">Services</a>
                         <a href="#projet" class="nav-item nav-link">Projets</a>
                         <a href="#news" class="nav-item nav-link">Actualités</a>
-                        <a href="#client" class="nav-item nav-link">Espace Client</a>
+                        <a href="client.php" class="nav-item nav-link">Espace Client</a>
                         <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">

@@ -2,11 +2,12 @@
 <!-- Carousel Start -->
 
 <style>
-   .service-item:hover .service-title {
+    .service-item:hover .service-title {
         color: #fff;
     }
-    .project-item:hover h4{
-        color:#fff;
+
+    .project-item:hover h4 {
+        color: #fff;
     }
 </style>
 <div class="header-carousel owl-carousel">
@@ -223,7 +224,7 @@
         </div>
 
         <div class="row justify-content-center text-center">
-           <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
+            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
                 <div class="service-item bg-light rounded">
                     <div class="service-img">
                         <img src="img/service-4.jpg" class="img-fluid w-100 rounded-top" alt="Suivi des projets">
@@ -235,8 +236,8 @@
                                 Gestion immobilière
                             </h4>
                             <p class="mb-4">
-                              
-                               Valorisation des biens immobiliers, entretien y compris des ascenseurs, suivi financier et conformité légale
+
+                                Valorisation des biens immobiliers, entretien y compris des ascenseurs, suivi financier et conformité légale
                             </p>
                         </div>
                     </div>
@@ -327,7 +328,7 @@
                     </div>
                 </div>
             </div>
-    
+
 
             <!-- Button -->
             <!-- <div class="col-12">
@@ -658,8 +659,35 @@
 
 
         </div>
+
+
     </div>
+
+    <br/>
+<style>
+    .contact iframe {
+        filter: grayscale(10%);
+        border-radius:20px;
+       
+    }
+</style>
+<!-- Google Maps -->
+<div class="container px-0 mt-5">
+    <iframe
+        src="https://www.google.com/maps?q=36.725758,3.100525&hl=fr&z=18&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 </div>
+</div>
+
+
+<!-- maps -->
+
 
 <!-- Contact End -->
 
