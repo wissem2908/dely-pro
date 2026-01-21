@@ -5,6 +5,9 @@
    .service-item:hover .service-title {
         color: #fff;
     }
+    .project-item:hover h4{
+        color:#fff;
+    }
 </style>
 <div class="header-carousel owl-carousel">
 
@@ -15,7 +18,7 @@
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-start p-3">
-                <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                <h1 class="display-1  text-white mb-4 fadeInUp animate__animated"
                     data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">
                     Des solutions professionnelles au service de votre performance
                 </h1>
@@ -42,7 +45,7 @@
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-center p-3">
-                <h1 class="display-1 text-capitalize text-white mb-4">
+                <h1 class="display-1  text-white mb-4">
                     Expertise, qualité et engagement durable
                 </h1>
                 <p class="mb-5 fs-5">
@@ -65,7 +68,7 @@
         </div>
         <div class="carousel-caption">
             <div class="carousel-caption-inner text-end p-3">
-                <h1 class="display-1 text-capitalize text-white mb-4">
+                <h1 class="display-1  text-white mb-4">
                     Un partenaire de confiance pour vos projets
                 </h1>
                 <p class="mb-5 fs-5">
