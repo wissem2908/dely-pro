@@ -2,8 +2,8 @@
 <!-- Carousel Start -->
 
 <style>
-    .service-title:hover{
-color:#fff;
+   .service-item:hover .service-title {
+        color: #fff;
     }
 </style>
 <div class="header-carousel owl-carousel">
@@ -86,11 +86,12 @@ color:#fff;
 <!-- Carousel End -->
 <style>
     .text-justify {
-    text-align: justify;
-}
-.about p {
-    text-align: justify;
-}
+        text-align: justify;
+    }
+
+    .about p {
+        text-align: justify;
+    }
 </style>
 <!-- About Start -->
 <div class="container-fluid about bg-light py-5" id="about"> >
@@ -146,12 +147,12 @@ color:#fff;
                             Logements promotionnels
                         </p>
                     </div>
-                      <div class="col-lg-6">
+                    <div class="col-lg-6">
                         <p class="text-dark">
                             <i class="fas fa-check-circle text-primary me-1"></i>
                             Gestion immobilière
                         </p>
-                      
+
                     </div>
                 </div>
 
@@ -206,11 +207,11 @@ color:#fff;
 </div>
 <!-- About End -->
 
-
+</div>
 
 <!-- Services Start -->
-<div class="container-fluid service py-5" id="service">
-    <div class="container py-5">
+<div class=" service py-5" id="service">
+    <div class="container-fluid py-5">
 
         <!-- Section title -->
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
@@ -218,10 +219,29 @@ color:#fff;
             <h1 class="display-4">Des solutions immobilières au service du développement urbain</h1>
         </div>
 
-        <div class="row g-4 justify-content-center text-center">
+        <div class="row justify-content-center text-center">
+           <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
+                <div class="service-item bg-light rounded">
+                    <div class="service-img">
+                        <img src="img/service-4.jpg" class="img-fluid w-100 rounded-top" alt="Suivi des projets">
+                    </div>
+                    <div class="service-content p-4">
+                        <div class="service-content-inner">
+                            <h4 class="mb-3 service-title">
+                                <i class="fas fa-tasks fa-lg text-primary me-2"></i>
+                                Gestion immobilière
+                            </h4>
+                            <p class="mb-4">
+                              
+                               Valorisation des biens immobiliers, entretien y compris des ascenseurs, suivi financier et conformité légale
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Service 1 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.1s">
                 <div class="service-item bg-light rounded">
                     <div class="service-img">
                         <img src="img/service-1.jpg" class="img-fluid w-100 rounded-top" alt="Promotion immobilière">
@@ -242,7 +262,7 @@ color:#fff;
             </div>
 
             <!-- Service 2 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded">
                     <div class="service-img">
                         <img src="img/service-2.jpg" class="img-fluid w-100 rounded-top" alt="Développement de projets">
@@ -263,7 +283,7 @@ color:#fff;
             </div>
 
             <!-- Service 3 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.5s">
                 <div class="service-item bg-light rounded">
                     <div class="service-img">
                         <img src="img/service-3.jpg" class="img-fluid w-100 rounded-top" alt="Aménagement foncier">
@@ -284,8 +304,8 @@ color:#fff;
             </div>
 
             <!-- Service 4 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item bg-light rounded">
+            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
+                <div class="service-item bg-light rounded ">
                     <div class="service-img">
                         <img src="img/service-4.jpg" class="img-fluid w-100 rounded-top" alt="Suivi des projets">
                     </div>
@@ -304,6 +324,7 @@ color:#fff;
                     </div>
                 </div>
             </div>
+    
 
             <!-- Button -->
             <!-- <div class="col-12">
@@ -644,34 +665,34 @@ color:#fff;
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
-$(function () {
+    $(function() {
 
-    $('#contactForm').on('submit', function (e) {
-        e.preventDefault();
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
 
-        let form = $(this);
+            let form = $(this);
 
-        $.ajax({
-            url: 'assets/php/send_mail.php',
-            type: 'POST',
-            data: form.serialize(),
-            dataType: 'json',
-            beforeSend: function () {
-                $('#formResponse').html('<div class="text-info">Envoi en cours...</div>');
-            },
-            success: function (response) {
-                if (response.status === 'success') {
-                    $('#formResponse').html('<div class="text-success">' + response.message + '</div>');
-                    form[0].reset();
-                } else {
-                    $('#formResponse').html('<div class="text-danger">' + response.message + '</div>');
+            $.ajax({
+                url: 'assets/php/send_mail.php',
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#formResponse').html('<div class="text-info">Envoi en cours...</div>');
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $('#formResponse').html('<div class="text-success">' + response.message + '</div>');
+                        form[0].reset();
+                    } else {
+                        $('#formResponse').html('<div class="text-danger">' + response.message + '</div>');
+                    }
+                },
+                error: function() {
+                    $('#formResponse').html('<div class="text-danger">Erreur serveur. Veuillez réessayer.</div>');
                 }
-            },
-            error: function () {
-                $('#formResponse').html('<div class="text-danger">Erreur serveur. Veuillez réessayer.</div>');
-            }
+            });
         });
-    });
 
-});
+    });
 </script>
