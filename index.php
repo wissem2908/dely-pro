@@ -1,5 +1,11 @@
 <?php include 'includes/header.php'; ?>
 <!-- Carousel Start -->
+
+<style>
+    .service-title:hover{
+color:#fff;
+    }
+</style>
 <div class="header-carousel owl-carousel">
 
     <!-- Slide 1 -->
@@ -208,7 +214,7 @@
                     </div>
                     <div class="service-content p-4">
                         <div class="service-content-inner">
-                            <h4 class="mb-3">
+                            <h4 class="mb-3 service-title">
                                 <i class="fas fa-building fa-lg text-primary me-2"></i>
                                 Promotion immobilière
                             </h4>
@@ -229,7 +235,7 @@
                     </div>
                     <div class="service-content p-4">
                         <div class="service-content-inner">
-                            <h4 class="mb-3">
+                            <h4 class="mb-3 service-title">
                                 <i class="fas fa-project-diagram fa-lg text-primary me-2"></i>
                                 Développement de projets
                             </h4>
@@ -250,7 +256,7 @@
                     </div>
                     <div class="service-content p-4">
                         <div class="service-content-inner">
-                            <h4 class="mb-3">
+                            <h4 class="mb-3 service-title">
                                 <i class="fas fa-map-marked-alt fa-lg text-primary me-2"></i>
                                 Aménagement du foncier
                             </h4>
@@ -271,7 +277,7 @@
                     </div>
                     <div class="service-content p-4">
                         <div class="service-content-inner">
-                            <h4 class="mb-3">
+                            <h4 class="mb-3 service-title">
                                 <i class="fas fa-tasks fa-lg text-primary me-2"></i>
                                 Suivi et réalisation
                             </h4>
@@ -435,7 +441,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="news-item bg-light rounded overflow-hidden">
                     <div class="news-img">
-                        <img src="assets/images/img01.jpg" class="img-fluid w-100" alt="Actualité 1">
+                        <img src="assets/images/img06.jpg" class="img-fluid w-100" alt="Actualité 1">
                     </div>
                     <div class="news-content p-4">
                         <h5 class="mb-2">Appels d’offres</h5>
@@ -450,7 +456,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="news-item bg-light rounded overflow-hidden">
                     <div class="news-img">
-                        <img src="assets/images/img02.jpg" class="img-fluid w-100" alt="Actualité 2">
+                        <img src="assets/images/img07.webp" class="img-fluid w-100" alt="Actualité 2">
                     </div>
                     <div class="news-content p-4">
                         <h5 class="mb-2">Avis de consultation</h5>
