@@ -570,7 +570,7 @@
                         </div>
                         <div class="ms-4">
                             <h4>Téléphone</h4>
-                            <p class="mb-0">+213 (0) 773 66 89 29</p>
+                            <p class="mb-0"></p>
                         </div>
                     </div>
 
@@ -590,7 +590,7 @@
                         </div>
                         <div class="ms-4">
                             <h4>Email</h4>
-                            <p class="mb-0">dg.delypro@gmail.com</p>
+                            <p class="mb-0">contact@delypro.dz</p>
                         </div>
                     </div>
                 </div>
