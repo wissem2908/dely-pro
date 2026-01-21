@@ -27,6 +27,13 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .navbar .navbar-nav .nav-item.nav-link,
+        .navbar .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,11 +48,11 @@
 
 
     <!-- Topbar Start -->
-    <div class="container-fluid topbar px-0 d-none d-lg-block">
+    <!-- <div class="container-fluid topbar px-0 d-none d-lg-block">
         <div class="container px-0">
             <div class="row gx-0 align-items-center" style="height: 45px;">
 
-                <!-- Left side: Contact info -->
+          
                 <div class="col-lg-8 text-center text-lg-start mb-lg-0">
                     <div class="d-flex flex-wrap">
                         <span class="text-muted me-4">
@@ -63,7 +70,7 @@
                     </div>
                 </div>
 
-                <!-- Right side: Social media -->
+           
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-flex align-items-center justify-content-end">
                         <a href="#" class="btn btn-primary btn-square rounded-circle nav-fill me-3" aria-label="Facebook">
@@ -83,17 +90,17 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Topbar End -->
 
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid sticky-top px-0">
-        <div class="position-absolute bg-dark" style="left: 0; top: 0; width: 100%; height: 100%;">
+        <div class="position-absolute" style="left: 0; top: 0; width: 100%; height: 100%; background: #102147;">
         </div>
         <div class="container px-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-white py-6 px-4">
+            <nav class="navbar navbar-expand-lg navbar-dark py-6 px-4">
                 <a href="index.php" class="navbar-brand p-0">
 
                     <img src="assets/images/delypro-logo.jpg" alt="Logo" width="150" height="50">
@@ -102,7 +109,7 @@
                     <span class="fa fa-bars"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
+                    <div class="navbar-nav ms-auto py-0"  id="mainNav">
                         <a href="index.php" class="nav-item nav-link active">Accueil</a>
                         <a href="#about" class="nav-item nav-link">À Propos</a>
                         <a href="#service" class="nav-item nav-link">Services</a>
@@ -115,6 +122,28 @@
                             <a href="https://htmlcodex.com/downloading/?item=3338" class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Buy Pro Version</a>
                         </div> -->
                 </div>
+
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const navLinks = document.querySelectorAll('#mainNav .nav-link');
+
+                        console.log('Nav links found:', navLinks.length);
+
+                        navLinks.forEach(link => {
+                            link.addEventListener('click', function() {
+                                console.log('Clicked link:', this);
+                                navLinks.forEach(l => l.classList.remove('active'));
+                                this.classList.add('active');
+                            });
+                        });
+
+
+                        
+                    });
+                </script>
+
+
             </nav>
         </div>
     </div>
