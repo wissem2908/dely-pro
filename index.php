@@ -347,7 +347,7 @@
         <!-- Section title -->
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h4 class="text-primary">Nos projets</h4>
-            <h1 class="display-4">Programmes immobiliers par localisation</h1>
+            <h1 class="display-4">Programmes immobiliers</h1>
         </div>
 
         <div class="project-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
@@ -467,7 +467,7 @@
         <!-- Section Title -->
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h4 class="text-primary">Actualités</h4>
-            <h1 class="display-4">Nos dernières nouvelles et articles</h1>
+            <h1 class="display-4">Actualités et Articles</h1>
         </div>
 
         <div class="row g-4">
