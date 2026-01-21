@@ -84,7 +84,14 @@ color:#fff;
 </div>
 
 <!-- Carousel End -->
-
+<style>
+    .text-justify {
+    text-align: justify;
+}
+.about p {
+    text-align: justify;
+}
+</style>
 <!-- About Start -->
 <div class="container-fluid about bg-light py-5" id="about"> >
     <div class="container py-5">
@@ -99,7 +106,7 @@ color:#fff;
             </div>
 
             <!-- Content -->
-            <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
+            <div class="col-lg-6 col-xl-7 wow fadeInRight text-justify" data-wow-delay="0.3s">
 
                 <h4 class="text-primary">À propos</h4>
                 <h1 class="display-5 mb-4">
@@ -138,6 +145,13 @@ color:#fff;
                             <i class="fas fa-check-circle text-primary me-1"></i>
                             Logements promotionnels
                         </p>
+                    </div>
+                      <div class="col-lg-6">
+                        <p class="text-dark">
+                            <i class="fas fa-check-circle text-primary me-1"></i>
+                            Gestion immobilière
+                        </p>
+                      
                     </div>
                 </div>
 
