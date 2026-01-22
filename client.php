@@ -5,7 +5,7 @@
     <!-- Page Header -->
     <div class="text-center mb-5">
         <h5 class="text-danger fw-bold">Remplissez le formulaire</h5>
-      
+
         <p class="text-muted mb-0">Veuillez renseigner les informations demandées avec exactitude</p>
     </div>
 
@@ -21,9 +21,9 @@
                         <label class="form-label">Wilayas</label>
                         <select class="form-select" name="wilaya">
                             <option value="">Choisir...</option>
-                            <option value="Alger">Alger</option>
+                            <!-- <option value="Alger">Alger</option>
                             <option value="Oran">Oran</option>
-                            <option value="Blida">Blida</option>
+                            <option value="Blida">Blida</option> -->
                         </select>
                     </div>
 
@@ -106,18 +106,17 @@
         <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
                 <h5 class="fw-bold mb-4">Vérification et confirmation</h5>
-
+ 
                 <!-- Captcha -->
-         <!-- Captcha -->
-<div class="row align-items-center g-3 mb-4">
-    <div class="col-md-4">
-        <img src="assets/php/captcha.php" alt="Code de vérification" class="img-fluid border rounded">
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Code de vérification</label>
-        <input type="text" class="form-control" name="captcha" required>
-    </div>
-</div>
+                <div class="row align-items-center g-3 mb-4">
+                    <div class="col-md-4">
+                        <img src="assets/php/captcha.php" alt="Code de vérification" class="img-fluid border rounded">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Code de vérification</label>
+                        <input type="text" class="form-control" name="captcha" required>
+                    </div>
+                </div>
 
 
                 <!-- Confirmations -->
@@ -153,41 +152,60 @@
 <?php include 'includes/footer.php'; ?>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script>
-$(document).ready(function() {
-    $('form').on('submit', function(e) {
-        e.preventDefault(); // prevent default form submission
 
-        // Collect form data
-        var formData = $(this).serializeArray(); // get all form inputs
-        var data = {};
+function wilayas(){
+    $.ajax({
+        url:'assets/php/wilayas.php',
+        type:'GET',
+        success:function(response){
+            let data = JSON.parse(response);
+            let select = $('select[name="wilaya"]');
+            data.forEach(function(wilaya){
+                let option = $('<option></option>').attr('value', wilaya.id).text(wilaya.name);
+                select.append(option);
+            });
+        }
+    })
+}
+wilayas()
+</script>
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault(); // prevent default form submission
 
-        // Convert form data to an object
-        $.each(formData, function(_, field) {
-            data[field.name] = field.value;
-        });
+            // Collect form data
+            var formData = $(this).serializeArray(); // get all form inputs
+            var data = {};
 
-        // Add user agent and IP
-        data.user_agent = navigator.userAgent;
+            // Convert form data to an object
+            $.each(formData, function(_, field) {
+                data[field.name] = field.value;
+            });
 
-        $.ajax({
-            url: 'assets/php/inscription.php', 
-            type: 'POST',
-            data: data,
-            success: function(response) {
-                // Handle success
-                alert('Formulaire soumis avec succès !');
-                console.log(response); // For debugging
-                $('form')[0].reset(); // reset the form
-            },
-            error: function(xhr, status, error) {
-                // Handle error
-                alert('Erreur lors de la soumission du formulaire.');
-                console.error(error);
-            }
+            // Add user agent and IP
+            data.user_agent = navigator.userAgent;
+
+            $.ajax({
+                url: 'assets/php/inscription.php',
+                type: 'POST',
+                data: data,
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    alert(data.message)
+
+                    // Handle success
+
+                    console.log(response); // For debugging
+                    $('form')[0].reset(); // reset the form
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    alert('Erreur lors de la soumission du formulaire.');
+                    console.error(error);
+                }
+            });
         });
     });
-});
 </script>
-
