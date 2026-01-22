@@ -12,7 +12,7 @@
     <form method="post" action="traitement.php">
 
         <!-- Choix du site -->
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
                 <h5 class="fw-bold mb-4">Choix du site</h5>
 
@@ -41,7 +41,7 @@
         </div>
 
         <!-- Souscripteur -->
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
                 <h5 class="fw-bold mb-4">Informations concernant le souscripteur</h5>
 
@@ -103,20 +103,22 @@
         </div>
 
         <!-- Sécurité & validation -->
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
                 <h5 class="fw-bold mb-4">Vérification et confirmation</h5>
 
                 <!-- Captcha -->
-                <div class="row align-items-center g-3 mb-4">
-                    <div class="col-md-4">
-                        <img src="captcha.php" alt="captcha" class="img-fluid border rounded">
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Code de vérification</label>
-                        <input type="text" class="form-control" name="captcha" required>
-                    </div>
-                </div>
+         <!-- Captcha -->
+<div class="row align-items-center g-3 mb-4">
+    <div class="col-md-4">
+        <img src="assets/php/captcha.php" alt="Code de vérification" class="img-fluid border rounded">
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Code de vérification</label>
+        <input type="text" class="form-control" name="captcha" required>
+    </div>
+</div>
+
 
                 <!-- Confirmations -->
                 <div class="form-check mb-3">
@@ -151,3 +153,41 @@
 <?php include 'includes/footer.php'; ?>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('form').on('submit', function(e) {
+        e.preventDefault(); // prevent default form submission
+
+        // Collect form data
+        var formData = $(this).serializeArray(); // get all form inputs
+        var data = {};
+
+        // Convert form data to an object
+        $.each(formData, function(_, field) {
+            data[field.name] = field.value;
+        });
+
+        // Add user agent and IP
+        data.user_agent = navigator.userAgent;
+
+        $.ajax({
+            url: 'assets/php/inscription.php', 
+            type: 'POST',
+            data: data,
+            success: function(response) {
+                // Handle success
+                alert('Formulaire soumis avec succès !');
+                console.log(response); // For debugging
+                $('form')[0].reset(); // reset the form
+            },
+            error: function(xhr, status, error) {
+                // Handle error
+                alert('Erreur lors de la soumission du formulaire.');
+                console.error(error);
+            }
+        });
+    });
+});
+</script>
+
