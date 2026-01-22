@@ -1,4 +1,7 @@
 <?php include 'includes/header.php'; ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+
 
 <div class="container my-5" style="max-width: 1100px;">
 
@@ -29,7 +32,12 @@
 
                     <div class="col-md-4">
                         <label class="form-label">Projet</label>
-                        <input type="text" class="form-control" name="projet">
+                        <!-- <input type="text" class="form-control" name="projet"> -->
+                        <select class="form-select" name="projet">
+                            <option value="">Choisir...</option>
+                            <option value="Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR) ">Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR)</option>
+                            <option>30 logements promotionnels avec parking et 8 locaux commerciaux (REGHAIA)</option>
+                        </select>
                     </div>
 
                     <div class="col-md-4">
@@ -193,6 +201,22 @@ wilayas()
                 data: data,
                 success: function(response) {
                     var data = JSON.parse(response);
+
+                    if(data.response === 'true') {
+                        // Success
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Succès',
+                            text: data.message
+                        });
+                    } else {
+                        // Error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erreur',
+                            text: data.message
+                        });
+                    }
                     alert(data.message)
 
                     // Handle success
