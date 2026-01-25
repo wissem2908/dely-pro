@@ -18,13 +18,13 @@ if (!empty($missing)) {
 }
 
 // ===== 2. Validate captcha =====
-$user_captcha = strtoupper(trim($_POST['captcha']));
-$session_captcha = $_SESSION['captcha_code'] ?? '';
-if ($user_captcha !== $session_captcha) {
-    echo json_encode(['response'=>'false','message'=>'captcha_invalid']);
-    exit;
-}
-unset($_SESSION['captcha_code']); // prevent reuse
+// $user_captcha = strtoupper(trim($_POST['captcha']));
+// $session_captcha = $_SESSION['captcha_code'] ?? '';
+// if ($user_captcha !== $session_captcha) {
+//     echo json_encode(['response'=>'false','message'=>'captcha_invalid']);
+//     exit;
+// }
+// unset($_SESSION['captcha_code']); // prevent reuse
 
 try {
     // ===== 3. Connect to DB =====
@@ -73,6 +73,10 @@ try {
     ]);
 
     if ($res) {
+        
+
+    // ===== 6. Generate PDF proof using TCPDF =====
+    require_once  'generate_inscription_pdf.php';
         echo json_encode(['response'=>'true','message'=>'inscription_success']);
     } else {
         echo json_encode(['response'=>'false','message'=>'error_inserting']);

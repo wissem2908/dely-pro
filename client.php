@@ -204,11 +204,7 @@ wilayas()
 
                     if(data.response === 'true') {
                         // Success
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Succès',
-                            text: data.message
-                        });
+                     window.location.href = 'confirmation.php';
                     } else {
                         // Error
                         Swal.fire({
@@ -217,7 +213,7 @@ wilayas()
                             text: data.message
                         });
                     }
-                    alert(data.message)
+                    // alert(data.message)
 
                     // Handle success
 
