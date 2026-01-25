@@ -2,12 +2,69 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
 
+<style>
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/images/bg.jpg') no-repeat center center/cover;
+    z-index: -2;
+}
 
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* black overlay, adjust opacity */
+    z-index: -1;
+}/* Card styling for modern look */
+.card {
+    background: rgb(16 33 71 / 40%); /* semi-transparent white */
+    backdrop-filter: blur(10px); /* blur behind card */
+    border-radius: 1rem; /* rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2); /* shadow */
+    padding: 1.5rem; /* inner spacing */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+/* Optional: input styling for glass effect */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.form-label{
+    color: #c9c9c9;
+}
+.text-muted {
+    color: #ffffff !important;
+}
+/* Buttons with shadow */
+.btn-primary {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn-primary:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+</style>
 <div class="container my-5" style="max-width: 1100px;">
 
     <!-- Page Header -->
     <div class="text-center mb-5">
-        <h5 class="text-danger fw-bold">Remplissez le formulaire</h5>
+        <h5 class=" fw-bold" style="color:#44d2f6">Remplissez le formulaire</h5>
 
         <p class="text-muted mb-0">Veuillez renseigner les informations demandées avec exactitude</p>
     </div>
@@ -137,7 +194,7 @@
 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="confirm2" name="confirm2" required>
-                    <label class="form-check-label" for="confirm2">
+                    <label class="form-check-label" for="confirm2" style="color:#fff;">
                         En soumettant ce formulaire, j'accepte les
                         <b>conditions générales d'utilisation</b> et autorise
                         <b>DELYPRO</b> à utiliser mes informations pour me recontacter.

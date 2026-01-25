@@ -111,12 +111,12 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0"  id="mainNav">
                         <a href="index.php" class="nav-item nav-link active">Accueil</a>
-                        <a href="#about" class="nav-item nav-link">À Propos</a>
-                        <a href="#service" class="nav-item nav-link">Services</a>
-                        <a href="#projet" class="nav-item nav-link">Projets</a>
-                        <a href="#news" class="nav-item nav-link">Actualités</a>
+                        <a href="index.php#about" class="nav-item nav-link">À Propos</a>
+                        <a href="index.php#service" class="nav-item nav-link">Services</a>
+                        <a href="index.php#projet" class="nav-item nav-link">Projets</a>
+                        <a href="index.php#news" class="nav-item nav-link">Actualités</a>
                         <a href="client.php" class="nav-item nav-link">Espace Client</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                        <a href="index.php#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">
                             <a href="https://htmlcodex.com/downloading/?item=3338" class="btn btn-primary rounded-pill text-white py-2 px-4 ms-2 flex-wrap flex-sm-shrink-0">Buy Pro Version</a>
