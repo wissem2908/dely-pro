@@ -129,14 +129,14 @@
 
                 <!-- Confirmations -->
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="confirm1" required>
+                    <input class="form-check-input" type="checkbox" id="confirm1" name="confirm1" required>
                     <label class="form-check-label fw-bold text-danger" for="confirm1">
                         Je confirme que toutes les informations sont justes.
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="confirm2" required>
+                    <input class="form-check-input" type="checkbox" id="confirm2" name="confirm2" required>
                     <label class="form-check-label" for="confirm2">
                         En soumettant ce formulaire, j'accepte les
                         <b>conditions générales d'utilisation</b> et autorise

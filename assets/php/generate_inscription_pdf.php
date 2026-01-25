@@ -103,11 +103,5 @@ $stmt = $bdd->prepare("
 ");
 $stmt->execute([$reference, $reference.".pdf", $lastInsertId]);
 // JSON response
-echo json_encode([
-    'response'  => 'true',
-    'message'   => 'inscription_success',
-    'reference' => $reference,
-    'pdf_url'   => $_SESSION['pdf_file']
-]);
-exit;
+
 ?>

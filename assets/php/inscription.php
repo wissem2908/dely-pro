@@ -4,7 +4,7 @@ session_start(); // needed for captcha
 include_once 'config.php';
 
 // ===== 1. Validate required fields =====
-$required_fields = ['nom','prenom','date_naissance','nin','adresse','tel','situation','captcha'];
+$required_fields = ['nom','prenom','date_naissance','nin','adresse','tel','situation','captcha','confirm2'];
 $missing = [];
 foreach ($required_fields as $field) {
     if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
@@ -18,13 +18,13 @@ if (!empty($missing)) {
 }
 
 // ===== 2. Validate captcha =====
-// $user_captcha = strtoupper(trim($_POST['captcha']));
-// $session_captcha = $_SESSION['captcha_code'] ?? '';
-// if ($user_captcha !== $session_captcha) {
-//     echo json_encode(['response'=>'false','message'=>'captcha_invalid']);
-//     exit;
-// }
-// unset($_SESSION['captcha_code']); // prevent reuse
+$user_captcha = strtoupper(trim($_POST['captcha']));
+$session_captcha = $_SESSION['captcha_code'] ?? '';
+if ($user_captcha !== $session_captcha) {
+    echo json_encode(['response'=>'false','message'=>'captcha_invalid']);
+    exit;
+}
+unset($_SESSION['captcha_code']); // prevent reuse
 
 try {
     // ===== 3. Connect to DB =====
@@ -77,7 +77,15 @@ try {
 
     // ===== 6. Generate PDF proof using TCPDF =====
     require_once  'generate_inscription_pdf.php';
-        echo json_encode(['response'=>'true','message'=>'inscription_success']);
+
+    require_once 'mail.php';
+ echo json_encode([
+    'response'  => 'true',
+    'message'   => 'inscription_success',
+    'reference' => $reference,
+    'pdf_url'   => $_SESSION['pdf_file']
+]);
+
     } else {
         echo json_encode(['response'=>'false','message'=>'error_inserting']);
     }
