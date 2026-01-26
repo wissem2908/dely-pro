@@ -57,20 +57,38 @@ try {
     $ip_address = $_SERVER['REMOTE_ADDR'];
     $user_agent = $_POST['user_agent'] ?? $_SERVER['HTTP_USER_AGENT'] ?? null;
 
-    // ===== 5. Insert into database =====
-    $stmt = $bdd->prepare("
-        INSERT INTO delypro_inscriptions (
-            wilaya, projet, typologie, nom, prenom, date_naissance, type_date_naissance,
-            nin, adresse, telephone, email, situation_matrimoniale,
-            confirmation_exactitude, confirmation_cgu, ip_address, user_agent
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ");
 
-    $res = $stmt->execute([
-        $wilaya, $projet, $typologie, $nom, $prenom, $date_naissance, $type_date_naissance,
-        $nin, $adresse, $telephone, $email, $situation_matrimoniale,
-        $confirmation_exactitude, $confirmation_cgu, $ip_address, $user_agent
-    ]);
+
+
+    /************************* generate username and password ********************************* */
+
+// Generate unique system username (no personal data)
+do {
+    $username = 'USR-' . date('Ymd') . '-' . strtoupper(bin2hex(random_bytes(2)));
+    $check = $bdd->prepare("SELECT COUNT(*) FROM delypro_inscriptions WHERE username = ?");
+    $check->execute([$username]);
+} while ($check->fetchColumn() > 0);
+
+// Generate secure password (shown once to user)
+$plain_password = bin2hex(random_bytes(4)); // 8 chars
+
+
+    // ===== 5. Insert into database =====
+$stmt = $bdd->prepare("
+    INSERT INTO delypro_inscriptions (
+        username, password, wilaya, projet, typologie, nom, prenom, date_naissance, type_date_naissance,
+        nin, adresse, telephone, email, situation_matrimoniale,
+        confirmation_exactitude, confirmation_cgu, ip_address, user_agent
+       
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+");
+
+$res = $stmt->execute([
+       $username, $plain_password,$wilaya, $projet, $typologie, $nom, $prenom, $date_naissance, $type_date_naissance,
+    $nin, $adresse, $telephone, $email, $situation_matrimoniale,
+    $confirmation_exactitude, $confirmation_cgu, $ip_address, $user_agent
+ 
+]);
 
     if ($res) {
         
@@ -78,12 +96,15 @@ try {
     // ===== 6. Generate PDF proof using TCPDF =====
     require_once  'generate_inscription_pdf.php';
 
-    require_once 'mail.php';
+     require_once 'mail.php';
  echo json_encode([
     'response'  => 'true',
     'message'   => 'inscription_success',
     'reference' => $reference,
-    'pdf_url'   => $_SESSION['pdf_file']
+    'pdf_url'   => $_SESSION['pdf_file'],
+        'username' => $username,
+    'password' => $plain_password,
+
 ]);
 
     } else {
