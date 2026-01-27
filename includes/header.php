@@ -31,7 +31,7 @@
     <style>
         .navbar .navbar-nav .nav-item.nav-link,
         .navbar .navbar-nav .nav-link {
-            color: #ffffff !important;
+            color: #102147 !important;
         }
     </style>
 </head>
@@ -97,13 +97,13 @@
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid sticky-top px-0">
-        <div class="position-absolute" style="left: 0; top: 0; width: 100%; height: 100%; background: #102147;">
+        <div class="position-absolute" style="left: 0; top: 0; width: 100%; height: 100%; background: #fff;">
         </div>
         <div class="container px-0">
             <nav class="navbar navbar-expand-lg navbar-dark py-6 px-4">
                 <a href="index.php" class="navbar-brand p-0">
 
-                    <img src="assets/images/delypro-logo.jpg" alt="Logo" width="150" height="50">
+                    <img src="assets/images/delypro-logo.png" alt="Logo" width="150" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>

@@ -96,7 +96,7 @@ $res = $stmt->execute([
     // ===== 6. Generate PDF proof using TCPDF =====
     require_once  'generate_inscription_pdf.php';
 
-     require_once 'mail.php';
+     //require_once 'mail.php';
  echo json_encode([
     'response'  => 'true',
     'message'   => 'inscription_success',

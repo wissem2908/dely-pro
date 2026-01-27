@@ -74,13 +74,14 @@ body::after {
         <!-- Choix du site -->
         <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="fw-bold mb-4">Choix du site</h5>
+                <h5 class="fw-bold mb-4 text-white">Choix du site</h5>
 
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <label class="form-label">Wilayas</label>
+                        <label class="form-label">Wilaya</label>
                         <select class="form-select" name="wilaya">
                             <option value="">Choisir...</option>
+                            <option value="16">Alger</option>
                             <!-- <option value="Alger">Alger</option>
                             <option value="Oran">Oran</option>
                             <option value="Blida">Blida</option> -->
@@ -99,7 +100,15 @@ body::after {
 
                     <div class="col-md-4">
                         <label class="form-label">Typologie</label>
-                        <input type="text" class="form-control" name="typologie">
+                        <!-- <input type="text" class="form-control" name="typologie"> -->
+                        <select class="form-select" name="typologie">
+                            <option value="">Choisir...</option>
+                            <option value="F3"> F3</option>
+                            <option value="F4"> F4</option>
+                                <option value="F5"> F5</option>
+                                 <option value="Place de stationnement">Place de stationnement</option>
+                                 <option value="Local commercial">Local commercial</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -108,7 +117,7 @@ body::after {
         <!-- Souscripteur -->
         <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="fw-bold mb-4">Informations concernant le souscripteur</h5>
+                <h5 class="fw-bold mb-4 text-white">Informations concernant le souscripteur</h5>
 
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -170,7 +179,7 @@ body::after {
         <!-- Sécurité & validation -->
         <div class="card border-1 shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="fw-bold mb-4">Vérification et confirmation</h5>
+                <h5 class="fw-bold mb-4 text-white">Vérification et confirmation</h5>
  
                 <!-- Captcha -->
                 <div class="row align-items-center g-3 mb-4">
@@ -233,7 +242,7 @@ function wilayas(){
         }
     })
 }
-wilayas()
+//wilayas()
 </script>
 <script>
     $(document).ready(function() {

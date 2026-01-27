@@ -70,7 +70,7 @@
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="https://anurb.dz" class="border-bottom text-primary" target="_blank"><i class="fas fa-copyright text-light me-2"></i>anurb.dz</a>, Tous droits réservés.</span>
+                        <span class="text-body"><a href="http://delypro.dz" class="border-bottom text-primary" target="_blank"><i class="fas fa-copyright text-light me-2"></i>delypro.dz</a>, Tous droits réservés.</span>
                     </div>
                   
                 </div>

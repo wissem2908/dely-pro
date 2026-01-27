@@ -1,7 +1,7 @@
 <?php
 // ===== 7. Send email with PDF attachment =====
 
-$to = $email; // recipient email
+$to = "omri.wissem.23@gmail.com"; // recipient email
 $subject = "Votre attestation de preuve d'inscription";
 $message = "
 <html>
@@ -32,7 +32,7 @@ $boundary = md5("DELYPRO-PDF-" . time());
 
 // Headers
 $headers = "MIME-Version: 1.0\r\n";
-$headers .= "From: DEYPRO <no-reply@yourdomain.com>\r\n";
+$headers .= "From: DEYPRO <contact@delypro.dz>\r\n";
 $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
 // Email body
@@ -50,8 +50,6 @@ $body .= $encoded_content . "\r\n";
 $body .= "--$boundary--";
 
 // Send email
-if(mail($to, $subject, $body, $headers)){
-    echo json_encode(['response'=>'true','message'=>'Inscription et email envoyés avec succès.']);
-}else{
-    echo json_encode(['response'=>'false','message'=>'Impossible d’envoyer l’email.']);
-}
+mail($to, $subject, $body, $headers);
+   
+

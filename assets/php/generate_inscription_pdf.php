@@ -1,10 +1,12 @@
 <?php
 require_once('./TCPDF-main/tcpdf.php');
 
-class DELYPRO_PDF extends TCPDF {
+class DELYPRO_PDF extends TCPDF
+{
 
     // Header
-    public function Header() {
+    public function Header()
+    {
 
         // Left logo
         $leftLogo =  '../images/delypro-logo.jpg';
@@ -14,14 +16,14 @@ class DELYPRO_PDF extends TCPDF {
 
         // Right logo
         $rightLogo =  '../images/cneru_logo.png';
-   if (file_exists($rightLogo)) {
-    $this->Image(
-        $rightLogo,
-        $this->getPageWidth() - 20 - 25, // right aligned (margin + width)
-       10,
-        25
-    );
-}
+        if (file_exists($rightLogo)) {
+            $this->Image(
+                $rightLogo,
+                $this->getPageWidth() - 20 - 25, // right aligned (margin + width)
+                10,
+                25
+            );
+        }
         // Arabic text (needs Unicode font)
         $this->SetFont('dejavusans', '', 9);
         $this->SetTextColor(0, 0, 0);
@@ -54,7 +56,8 @@ class DELYPRO_PDF extends TCPDF {
     }
 
     // Footer
-    public function Footer() {
+    public function Footer()
+    {
 
         $this->SetY(-30);
         $this->SetFont('times', '', 8);
@@ -124,7 +127,9 @@ $pdf->Cell(0, 20, 'ATTESTATION DE PREUVE D\'INSCRIPTION', 0, 1, 'C');
 $pdf->Ln(10);
 
 // --- Body ---
-$pdf->SetFont('helvetica', '', 14); // clean, professional, bigger text
+// $pdf->SetFont('helvetica', '', 14); // clean, professional, bigger text
+
+$pdf->SetFont('dejavusans', '', 14);
 $pdf->SetTextColor(0, 0, 0);
 
 $body = "
@@ -140,10 +145,11 @@ Par la présente, nous attestons que la demande suivante a été enregistrée av
 <b>Situation familiale</b>: $situation_matrimoniale<br>
 <b>Projet</b>: $projet<br>
 <b>Typologie</b>: $typologie<br>
-<b>Date d'inscription</b>: ".date('d/m/Y')."<br><br>
+<b>Date d'inscription</b>: " . date('d/m/Y') . "<br><br>
 
-Nom d'utilisateur: <button>$username</button> &nbsp;&nbsp;
-Mot de passe: $plain_password<br><br>
+
+
+
 
 </div>
 ";
@@ -152,11 +158,11 @@ Mot de passe: $plain_password<br><br>
 $pdf->writeHTMLCell(
     0,     // width (0 = full page width minus margins)
     0,     // height (0 = auto)
-    '',    // X position (empty = current)
+    10,    // X position (empty = current)
     '',    // Y position (empty = current)
     $body, // HTML content
     0,     // border
-    1,     // line after
+    2,     // line after
     false, // fill
     true,  // reset height
     '',    // align
@@ -164,10 +170,81 @@ $pdf->writeHTMLCell(
 );
 
 
+$pdf->Ln(5);
+
+// Labels
+$pdf->setRTL(false);
+$pdf->SetFont('dejavusans', '', 11);
+$pdf->Cell(40, 8, 'Code Utilisateur :', 0, 0);
+
+// Username box
+$pdf->Rect($pdf->GetX(), $pdf->GetY(), 55, 8);
+$pdf->Cell(50, 8, $username, 0, 0, 'C');
+
+$pdf->Cell(10, 8, '', 0, 0);
+
+// Password label
+$pdf->Cell(30, 8, 'Mot de passe :', 0, 0);
+
+// Password box
+$pdf->Rect($pdf->GetX(), $pdf->GetY(), 45, 8);
+$pdf->Cell(45, 8, $plain_password, 0, 1, 'C');
+
+//$pdf->Ln(6);
+
+
+// $pdf->setRTL(true);
+// $pdf->SetFont('dejavusans', '', 11);
+
+// $arText = "
+// سيدي، آنستي، سيدي:
+// - يرجى منكم الاحتفاظ بهذه الوثيقة بعناية وكذلك رقم التسجيل وكلمة المرور للتمكن من الدخول إلى التطبيق باستخدام هذين الرمزين لاحقًا.
+// - الرجاء إيداع الملف كاملًا مرفقًا بوثيقة التسجيل على مستوى المصالح التجارية لمديرية المشاريع المعنية بولايتكم.
+// - في حالة عدم إيداع ملفكم الإداري لدراسته خلال 15 يومًا من تاريخ التسجيل، يُلغى تسجيلكم تلقائيًا.
+
+// ملاحظة : من اجل مزيد من المعلومات الرجاء تفحص الموقع التالي dz.delypro.www.
+// ";
+
+// $pdf->MultiCell(0, 6, $arText, 0, 'R');
+$pdf->Ln(6);
+$pdf->SetFont('dejavusans', '', 10);
+$pdf->SetTextColor(0, 0, 0);
+
+$test = "
+<div style='line-height:1.6;'> <!-- 1.6 = 60% extra spacing -->
+Madame, Mademoiselle, Monsieur ;
+<br>
+- Vous êtes invité(e) à garder soigneusement la fiche d'inscription, le code d'utilisateur et
+le mot de passe afin d'accéder à votre compte plus tard.
+<br>
+- Veuillez déposer le dossier complet avec la fiche d'inscription au niveau de la direction des
+projet de votre Wilaya.<br>
+- Votre dossier complet doit nous parvenir dans 15 jours suivant la date d'inscription,
+dépassé ce délai votre demande sera annulée.
+
+</div>
+";
+
+// Use writeHTMLCell to parse HTML with spacing
+$pdf->writeHTMLCell(
+    0,     // width (0 = full page width minus margins)
+    0,     // height (0 = auto)
+    10,    // X position (empty = current)
+    '',    // Y position (empty = current)
+    $test, // HTML content
+    0,     // border
+    2,     // line after
+    false, // fill
+    true,  // reset height
+    'L',    // align
+    true   // autopadding
+);
+
+
 // --- QR Code ---
-$qrStyle = ['border'=>0,'padding'=>2,'fgcolor'=>[0,0,0],'bgcolor'=>false];
-$qrUrl = "https://dely-pro.dz/inscription_details.php?ref=$reference";
-$pdf->write2DBarcode($qrUrl, 'QRCODE,H', 160, 200, 45, 45, $qrStyle, 'N');
+$qrStyle = ['border' => 0, 'padding' => 2, 'fgcolor' => [0, 0, 0], 'bgcolor' => false];
+$qrUrl = "http://delypro.dz/inscription_details.php?ref=$reference";
+$pdf->write2DBarcode($qrUrl, 'QRCODE,H', 160, "", 45, 45, $qrStyle, 'N');
 
 // --- Footer ---
 $pdf->SetFont('dejavusans', 'I', 14);
@@ -176,21 +253,19 @@ $pdf->SetTextColor(100, 100, 100);
 
 // Save PDF
 $pdfDir = __DIR__ . "/../uploads/inscription_pdf/";
-if(!is_dir($pdfDir)) mkdir($pdfDir, 0777, true);
+if (!is_dir($pdfDir)) mkdir($pdfDir, 0777, true);
 
 $pdfFile = $pdfDir . "$reference.pdf";
 $pdf->Output($pdfFile, 'F');
 
 // Store URL for frontend
 $_SESSION['pdf_file'] = "uploads/inscription_pdf/$reference.pdf";
- $lastInsertId=$bdd->lastInsertId();
+$lastInsertId = $bdd->lastInsertId();
 
 $stmt = $bdd->prepare("
     UPDATE delypro_inscriptions 
     SET reference = ?, pdf_file = ? 
     WHERE id = ?
 ");
-$stmt->execute([$reference, $reference.".pdf", $lastInsertId]);
+$stmt->execute([$reference, $reference . ".pdf", $lastInsertId]);
 // JSON response
-
-?>
