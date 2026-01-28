@@ -359,7 +359,7 @@
             <!-- Project 1 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="assets/images/img01.jpg" class="img-fluid w-100 rounded" alt="9 logements de standing">
+                    <img src="assets/images/proj01.png" class="img-fluid w-100 rounded" alt="9 logements de standing">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -379,7 +379,7 @@
             <!-- Project 2 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="assets/images/img02.jpg" class="img-fluid w-100 rounded" alt="47 logements promotionnels">
+                    <img src="assets/images/proj02.png" class="img-fluid w-100 rounded" alt="47 logements promotionnels">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -399,7 +399,7 @@
             <!-- Project 3 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="assets/images/img01.jpg" class="img-fluid w-100 rounded" alt="19 logements avec commerces">
+                    <img src="assets/images/proj03.png" class="img-fluid w-100 rounded" alt="19 logements avec commerces">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -420,7 +420,7 @@
             <!-- Project 4 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="assets/images/img02.jpg" class="img-fluid w-100 rounded" alt="Résidence Scolaria">
+                    <img src="assets/images/proj04.png" class="img-fluid w-100 rounded" alt="Résidence Scolaria">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
@@ -441,7 +441,7 @@
             <!-- Project 5 -->
             <div class="project-item h-100">
                 <div class="project-img">
-                    <img src="assets/images/img05.jpg" class="img-fluid w-100 rounded" alt="30 logements promotionnels">
+                    <img src="assets/images/proj05.png" class="img-fluid w-100 rounded" alt="30 logements promotionnels">
                 </div>
                 <div class="project-content bg-light rounded p-4">
                     <div class="project-content-inner">
