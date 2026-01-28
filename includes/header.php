@@ -103,7 +103,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark py-6 px-4">
                 <a href="index.php" class="navbar-brand p-0">
 
-                    <img src="assets/images/delypro-logo.png" alt="Logo" width="150" height="50">
+                    <img src="assets/images/delypro-logo.png" alt="Logo" width="200" height="auto">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -115,7 +115,7 @@
                         <a href="index.php#service" class="nav-item nav-link">Services</a>
                         <a href="index.php#projet" class="nav-item nav-link">Projets</a>
                         <a href="index.php#news" class="nav-item nav-link">Actualités</a>
-                        <a href="client.php" class="nav-item nav-link">Espace Client</a>
+                        <a href="login.php" class="nav-item nav-link">Espace Client</a>
                         <a href="index.php#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">
