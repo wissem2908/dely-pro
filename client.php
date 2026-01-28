@@ -76,41 +76,82 @@ body::after {
             <div class="card-body">
                 <h5 class="fw-bold mb-4 text-white">Choix du site</h5>
 
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <label class="form-label">Wilaya</label>
-                        <select class="form-select" name="wilaya">
-                            <option value="">Choisir...</option>
-                            <option value="16">Alger</option>
-                            <!-- <option value="Alger">Alger</option>
-                            <option value="Oran">Oran</option>
-                            <option value="Blida">Blida</option> -->
-                        </select>
-                    </div>
+              <div id="rows-container">
 
-                    <div class="col-md-4">
-                        <label class="form-label">Projet</label>
-                        <!-- <input type="text" class="form-control" name="projet"> -->
-                        <select class="form-select" name="projet">
-                            <option value="">Choisir...</option>
-                            <option value="Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR) ">Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR)</option>
-                            <option>30 logements promotionnels avec parking et 8 locaux commerciaux (REGHAIA)</option>
-                        </select>
-                    </div>
+    <!-- ROW TEMPLATE -->
+    <div class="row g-3 align-items-end form-row">
+        <div class="col-md-3">
+            <label class="form-label">Wilaya</label>
+            <select class="form-select" name="wilaya[]">
+                <option value="">Choisir...</option>
+                <option value="16">Alger</option>
+            </select>
+        </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Typologie</label>
-                        <!-- <input type="text" class="form-control" name="typologie"> -->
-                        <select class="form-select" name="typologie">
-                            <option value="">Choisir...</option>
-                            <option value="F3"> F3</option>
-                            <option value="F4"> F4</option>
-                                <option value="F5"> F5</option>
-                                 <option value="Place de stationnement">Place de stationnement</option>
-                                 <option value="Local commercial">Local commercial</option>
-                        </select>
-                    </div>
-                </div>
+        <div class="col-md-4">
+            <label class="form-label">Projet</label>
+            <select class="form-select" name="projet[]">
+                <option value="">Choisir...</option>
+                <option value="Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR)">
+                    Résidence Scolaria – 54 logements avec parking et 8 locaux commerciaux (BAB EZZOUAR)
+                </option>
+                <option>
+                    30 logements promotionnels avec parking et 8 locaux commerciaux (REGHAIA)
+                </option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Typologie</label>
+            <select class="form-select" name="typologie[]">
+                <option value="">Choisir...</option>
+                <option value="F3">F3</option>
+                <option value="F4">F4</option>
+                <option value="F5">F5</option>
+                <option value="Place de stationnement">Place de stationnement</option>
+                <option value="Local commercial">Local commercial</option>
+            </select>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="col-md-2 d-flex gap-2">
+            <button type="button" class="btn btn-success add-row">
+                +
+            </button>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("click", function (e) {
+
+    // ADD ROW
+    if (e.target.classList.contains("add-row")) {
+        const row = e.target.closest(".form-row");
+        const clone = row.cloneNode(true);
+
+        // reset values
+        clone.querySelectorAll("select").forEach(select => {
+            select.value = "";
+        });
+
+        // change buttons
+        const btnContainer = clone.querySelector(".col-md-2");
+        btnContainer.innerHTML = `
+            <button type="button" class="btn btn-danger remove-row">−</button>
+        `;
+
+        document.getElementById("rows-container").appendChild(clone);
+    }
+
+    // REMOVE ROW
+    if (e.target.classList.contains("remove-row")) {
+        e.target.closest(".form-row").remove();
+    }
+});
+</script>
+
+</div>
+
             </div>
         </div>
 
@@ -245,53 +286,36 @@ function wilayas(){
 //wilayas()
 </script>
 <script>
-    $(document).ready(function() {
-        $('form').on('submit', function(e) {
-            e.preventDefault(); // prevent default form submission
+  $(document).ready(function () {
+    $('form').on('submit', function (e) {
+        e.preventDefault();
 
-            // Collect form data
-            var formData = $(this).serializeArray(); // get all form inputs
-            var data = {};
+        var formData = $(this).serialize(); // ✅ keeps arrays
 
-            // Convert form data to an object
-            $.each(formData, function(_, field) {
-                data[field.name] = field.value;
-            });
+        $.ajax({
+            url: 'assets/php/inscription.php',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                var data = JSON.parse(response);
 
-            // Add user agent and IP
-            data.user_agent = navigator.userAgent;
-
-            $.ajax({
-                url: 'assets/php/inscription.php',
-                type: 'POST',
-                data: data,
-                success: function(response) {
-                    var data = JSON.parse(response);
-
-                    if(data.response === 'true') {
-                        // Success
-                     window.location.href = 'confirmation.php';
-                    } else {
-                        // Error
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Erreur',
-                            text: data.message
-                        });
-                    }
-                    // alert(data.message)
-
-                    // Handle success
-
-                    console.log(response); // For debugging
-                    $('form')[0].reset(); // reset the form
-                },
-                error: function(xhr, status, error) {
-                    // Handle error
-                    alert('Erreur lors de la soumission du formulaire.');
-                    console.error(error);
+                if (data.response === 'true') {
+                    window.location.href = 'confirmation.php';
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: data.message
+                    });
                 }
-            });
+
+                console.log(response);
+            },
+            error: function () {
+                alert('Erreur lors de la soumission du formulaire.');
+            }
         });
     });
+});
+
 </script>

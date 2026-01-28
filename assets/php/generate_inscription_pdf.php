@@ -88,7 +88,7 @@ Tél / fax : +213 (0)28.46.66.83| E-mail : delypro@gmail.com <br>
 }
 
 
-$reference = 'DLY-' . date('Ymd') . '-' . $bdd->lastInsertId();
+
 
 // Create new PDF
 // $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -129,6 +129,47 @@ $pdf->Ln(10);
 // --- Body ---
 // $pdf->SetFont('helvetica', '', 14); // clean, professional, bigger text
 
+
+/* ============================================================
+   FETCH SITE CHOICES (1 → MANY)
+============================================================ */
+$stmt = $bdd->prepare("
+    SELECT wilaya, projet, typologie
+    FROM choix_site
+    WHERE id_inscription  = ?
+");
+$stmt->execute([$id_inscription]);
+$sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+/* ============================================================
+   BUILD HTML TABLE FOR SITES
+============================================================ */
+$sitesHtml = '
+<table border="1" cellpadding="6">
+    <thead>
+        <tr style="background-color:#f2f2f2;">
+            <th width="20%"><b>Wilaya</b></th>
+            <th width="50%"><b>Projet</b></th>
+            <th width="30%"><b>Typologie</b></th>
+        </tr>
+    </thead>
+    <tbody>
+';
+
+foreach ($sites as $site) {
+    $sitesHtml .= '
+        <tr>
+            <td width="20%">' . htmlspecialchars($site['wilaya']) . '</td>
+            <td width="50%">' . htmlspecialchars($site['projet']) . '</td>
+            <td width="30%">' . htmlspecialchars($site['typologie']) . '</td>
+        </tr>
+    ';
+}
+
+$sitesHtml .= '</tbody></table><br>';
+
+
+
 $pdf->SetFont('dejavusans', '', 14);
 $pdf->SetTextColor(0, 0, 0);
 
@@ -142,14 +183,12 @@ Par la présente, nous attestons que la demande suivante a été enregistrée av
 <b>NIN</b>: $nin<br>
 <b>Adresse</b>: $adresse<br>
 <b>Téléphone</b>: $telephone<br>
-<b>Situation familiale</b>: $situation_matrimoniale<br>
-<b>Projet</b>: $projet<br>
-<b>Typologie</b>: $typologie<br>
+<b>Situation familiale</b>: $situation<br>
+
 <b>Date d'inscription</b>: " . date('d/m/Y') . "<br><br>
 
-
-
-
+<b>Choix du site :</b><br><br>
+$sitesHtml
 
 </div>
 ";
