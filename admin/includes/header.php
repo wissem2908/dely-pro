@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="#" class="nxl-link">
+                        <a href="demandes.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-users"></i></span>
                             <span class="nxl-mtext">Demandes d'inscriptions</span><span class="nxl-arrow"></span>
                         </a>
