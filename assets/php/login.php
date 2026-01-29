@@ -13,7 +13,7 @@ try {
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    $req = $bdd->prepare("SELECT * FROM users WHERE username=? AND password=?");
+    $req = $bdd->prepare("SELECT * FROM delypro_inscriptions WHERE username=? AND password=?");
     $req->execute(array($username, $password));
     $user = $req->fetch();
     if ($user) {
@@ -33,8 +33,9 @@ try {
     }
 
 
+    echo json_encode($response);
 
-    echo json_encode($wilayas);
+
 
 } catch (Exception $e) {
     echo "Erreur: " . $e->getMessage();
