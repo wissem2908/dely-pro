@@ -570,7 +570,7 @@
                         </div>
                         <div class="ms-4">
                             <h4>Téléphone</h4>
-                            <p class="mb-0"></p>
+                            <p class="mb-0">0660 95 76 66</p>
                         </div>
                     </div>
 

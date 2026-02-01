@@ -118,7 +118,7 @@ $pdf->AddPage();
 $pdf->SetFont('dejavusans', 'B', 16);
 $pdf->SetTextColor(0, 51, 102); // dark blue
 // $pdf->Ln(20); // spacing from logo
-$pdf->Cell(0, 20, 'ATTESTATION DE PREUVE D\'INSCRIPTION', 0, 1, 'C');
+$pdf->Cell(0, 20, 'FICHE D\'INSCRIPTION', 0, 1, 'C');
 
 // Decorative line
 // $pdf->SetLineWidth(1);
@@ -279,6 +279,31 @@ $pdf->writeHTMLCell(
     true   // autopadding
 );
 
+$pdf->Ln(6);
+$pdf->SetFont('dejavusans', '', 12);
+$pdf->SetTextColor(0, 0, 0);
+
+$test2 = "
+<div style='line-height:1.6;'> <!-- 1.6 = 60% extra spacing -->
+La présente inscription ne vaut ni réservation ni engagement et ne confère aucun droit à l'acquisition, avant le traitement de l'ensemeble des demandes.  
+
+</div>
+";
+
+// Use writeHTMLCell to parse HTML with spacing
+$pdf->writeHTMLCell(
+    0,     // width (0 = full page width minus margins)
+    0,     // height (0 = auto)
+    10,    // X position (empty = current)
+    '',    // Y position (empty = current)
+    $test2, // HTML content
+    0,     // border
+    2,     // line after
+    false, // fill
+    true,  // reset height
+    'L',    // align
+    true   // autopadding
+);
 
 // --- QR Code ---
 $qrStyle = ['border' => 0, 'padding' => 2, 'fgcolor' => [0, 0, 0], 'bgcolor' => false];
