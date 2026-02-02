@@ -59,6 +59,12 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="demandes.php" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user"></i></span>
+                            <span class="nxl-mtext">Suivi de l'inscription</span><span class="nxl-arrow"></span>
+                        </a>
+                    </li>
+                     <li class="nxl-item nxl-hasmenu">
+                        <a href="list_clients.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-users"></i></span>
                             <span class="nxl-mtext">Demandes d'inscriptions</span><span class="nxl-arrow"></span>
                         </a>

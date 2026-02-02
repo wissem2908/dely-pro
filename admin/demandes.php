@@ -147,7 +147,7 @@ include('includes/header.php');
                   <span>Informations</span>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-step="2">
+                <div class="step " data-step="2">
                   <div class="circle"><i class="fa fa-gear"></i></div>
                   <span>Traitement</span>
                 </div>
@@ -291,7 +291,7 @@ include('includes/header.php');
                   </table>
                 </div>
 
-                <span class="badge bg-warning">En attente</span>
+                <!-- <span id="statut-client" class="badge bg-warning">En attente</span> -->
 
                 <!-- <div class="text-end mt-4">
               <button class="btn btn-primary next-step" data-next="2">
@@ -301,29 +301,83 @@ include('includes/header.php');
               </div>
 
               <!-- STEP 2 -->
-              <div class="wizard-content d-none" id="step-2">
-                <h5>Traitement du dossier</h5>
-                <hr />
+<div class="wizard-content d-none" id="step-2">
+    <h5>Traitement du dossier</h5>
+    <hr />
 
-                <span class="badge bg-info">En cours de traitement</span>
+    <!-- Status badge -->
+    <span class="badge bg-info mb-3">En cours de traitement</span>
 
-                <div class="mt-4">
-                  <button class="btn btn-success validate-btn">
-                    <i class="fa fa-check"></i> Valider
-                  </button>
-                  <button class="btn btn-danger ms-2 refuse-btn">
-                    <i class="fa fa-times"></i> Refuser
-                  </button>
-                </div>
-              </div>
+    <!-- Description -->
+    <p>
+        Votre dossier est actuellement en cours de traitement par notre équipe administrative.
+        Les documents que vous avez soumis sont en cours de vérification et validation.
+    </p>
+
+    <!-- Progress timeline -->
+    <!-- <div class="mt-4 mb-3">
+        <h6>Étapes du traitement :</h6>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Vérification des documents
+                <span class="badge bg-success rounded-pill"><i class="fa fa-check"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Validation des informations personnelles
+                <span class="badge bg-warning rounded-pill"><i class="fa fa-spinner fa-spin"></i></span>
+            </li>
+         
+        </ul>
+    </div> -->
+
+
+    <!-- Notes or instructions -->
+    <div class="mt-3 text-muted" style="font-size: 13px;">
+        <p>
+            Une fois le dossier validé, vous passerez à l'étape <b>Décision finale</b>.
+            Si des informations sont manquantes ou incorrectes, l'équipe pourra vous contacter pour compléter le dossier.
+        </p>
+    </div>
+</div>
+
 
               <!-- STEP 3 -->
-              <div class="wizard-content d-none" id="step-3">
-                <h5>Décision finale</h5>
-                <hr />
+            <div class="wizard-content d-none" id="step-3">
+    <h5>Décision finale</h5>
+    <hr />
 
-                <div id="finalResult"></div>
-              </div>
+    <div id="finalResult" class="mt-3">
+
+        <!-- Validé -->
+        <div class="final-valid d-none text-center">
+            <span class="badge bg-success mb-3">Dossier Validé</span>
+            <p>
+                Félicitations ! Votre dossier a été validé avec succès.
+                Vous pouvez maintenant passer aux étapes suivantes de votre inscription ou prendre rendez-vous si nécessaire.
+            </p>
+            <ul class="list-group list-group-flush text-start mt-3">
+                <li class="list-group-item"><i class="fa fa-check text-success me-2"></i> Votre dossier est complet et conforme.</li>
+                <li class="list-group-item"><i class="fa fa-check text-success me-2"></i> Aucune action supplémentaire n’est requise.</li>
+                <li class="list-group-item"><i class="fa fa-check text-success me-2"></i> Vous serez contacté(e) pour les prochaines étapes si nécessaire.</li>
+            </ul>
+        </div>
+
+        <!-- Refusé -->
+        <div class="final-refuse d-none text-center">
+            <span class="badge bg-danger mb-3">Dossier Refusé</span>
+            <p>
+                Malheureusement, votre dossier a été refusé. Veuillez consulter le motif ci-dessous et prendre les mesures nécessaires.
+            </p>
+            <div class="alert alert-danger mt-3" id="motif-refus">
+                <!-- Motif du refus dynamique via JS -->
+            </div>
+            <p class="text-muted mt-2" style="font-size: 13px;">
+                Si vous corrigez les informations ou documents manquants, vous pouvez soumettre à nouveau votre dossier.
+            </p>
+        </div>
+
+    </div>
+</div>
             </div>
           </div>
         </div>
@@ -415,6 +469,47 @@ include('includes/footer.php');
           .addClass("badge " + badgeClass)
           .text(u.statut.replace("_", " "));
 
+
+          /***************************** status ******************************* */
+if(u.statut === 'en_cours'){
+$('.step[data-step="2"]').addClass('active');
+
+ $('.step[data-step="1"]').addClass('completed');
+}
+else if(u.statut === 'valide' || u.statut === 'refuse'){
+$('.step[data-step="2"]').addClass('active');
+$('.step[data-step="3"]').addClass('active');
+ $('.step[data-step="1"]').addClass('completed');
+ $('.step[data-step="2"]').addClass('completed');
+}
+
+
+if(u.statut === 'valide'){
+    $('#finalResult .final-valid').removeClass('d-none');
+     $('.step[data-step="3"]').addClass('completed');
+
+     $('.step[data-step="3"].completed .circle')
+    .css('background', '#198754')      // green background
+    .css('color', '#fff')              // white icon
+    .html('<i class="fa fa-check"></i>'); // set icon to check
+} 
+else if(u.statut === 'refuse'){
+    $('#finalResult .final-refuse').removeClass('d-none');
+    $('#motif-refus').text(u.motif_refus || "Motif non fourni");
+ $('.step[data-step="3"]').addClass('completed');
+    // For refused status (red)
+$('.step[data-step="3"].completed .circle')
+    .css('background', '#dc3545')      // red background
+    .css('color', '#fff')              // white icon
+    .html('<i class="fa fa-times"></i>'); // set icon to X
+}
+
+$('.step').click(function() {
+    if (!$(this).hasClass('active')) return; // only active steps respond
+    let step = $(this).data('step');
+    $('.wizard-content').addClass('d-none');
+    $('#step-' + step).removeClass('d-none');
+});
 
         /**************************** table choix site **************************** */
 
@@ -514,4 +609,42 @@ include('includes/footer.php');
 
 
   });
+</script>
+<script>
+// $(function () {
+
+//     function goToStep(step) {
+//         $('.wizard-step').addClass('d-none');
+//         $('#step-' + step).removeClass('d-none');
+
+//         $('#wizardSteps .nav-link').addClass('disabled').removeClass('active');
+//         $('#wizardSteps .nav-link[data-step="' + step + '"]')
+//             .removeClass('disabled')
+//             .addClass('active');
+//     }
+
+//     $('.next-step').on('click', function () {
+//         let nextStep = $(this).data('next');
+//         let status = $(this).data('status') || 'en_cours';
+
+//         updateStatus(status, null, function () {
+//             goToStep(nextStep);
+//         });
+//     });
+
+//     $('.refuse-btn').on('click', function () {
+//         let motif = prompt("Motif du refus :");
+//         if (!motif) return;
+
+//         updateStatus('refuse', motif, function () {
+//             $('#validationResult').html(
+//                 '<span class="badge bg-danger">Refusé</span><p><b>Motif :</b> ' + motif + '</p>'
+//             );
+//             goToStep(3);
+//         });
+//     });
+
+
+
+// });
 </script>
