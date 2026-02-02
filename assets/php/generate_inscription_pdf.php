@@ -324,12 +324,12 @@ $pdf->Output($pdfFile, 'F');
 
 // Store URL for frontend
 $_SESSION['pdf_file'] = "uploads/inscription_pdf/$reference.pdf";
-$lastInsertId = $bdd->lastInsertId();
+// $lastInsertId = $bdd->lastInsertId();
 
 $stmt = $bdd->prepare("
     UPDATE delypro_inscriptions 
     SET reference = ?, pdf_file = ? 
     WHERE id = ?
 ");
-$stmt->execute([$reference, $reference . ".pdf", $lastInsertId]);
+$stmt->execute([$reference, $reference . ".pdf", $id_inscription]);
 // JSON response

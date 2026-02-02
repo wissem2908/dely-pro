@@ -231,6 +231,9 @@ include('includes/header.php');
                       id="piece_identite"
                       name="piece_identite"
                       accept=".pdf,.jpg,.png" />
+                    <a href="#" target="_blank" class="text-primary d-none" id="view_piece_identite">
+                      👁 Voir le document
+                    </a>
                   </div>
                   <div class="col-md-3">
                     <label for="extrait_naissance" class="form-label">Extrait de naissance</label>
@@ -240,7 +243,12 @@ include('includes/header.php');
                       id="extrait_naissance"
                       name="extrait_naissance"
                       accept=".pdf,.jpg,.png" />
+                    <a href="#" target="_blank" class="text-primary d-none" id="view_extrait_naissance">
+                      👁 Voir le document
+                    </a>
                   </div>
+
+
                   <div class="col-md-3">
                     <label class="form-label"> &nbsp;</label>
                     <button class="btn btn-secondary " id="files-btn"> Uploader</button>
@@ -446,14 +454,14 @@ include('includes/footer.php');
 
     /**************************************** uploads files ******************************************************* */
 
-    $('#files-btn').click(function(e){
+    $('#files-btn').click(function(e) {
       e.preventDefault();
-      
+
       let formData = new FormData();
-   
+
       let pieceIdentite = $('#piece_identite')[0].files[0];
       let extraitNaissance = $('#extrait_naissance')[0].files[0];
-    
+
       formData.append('piece_identite', pieceIdentite);
       formData.append('extrait_naissance', extraitNaissance);
       $.ajax({
@@ -471,6 +479,39 @@ include('includes/footer.php');
       });
 
     })
+
+
+    /**************************************** view uploaded files ******************************************************* */
+
+        // Load existing uploaded files
+    $.ajax({
+        url: 'assets/php/clients/get_uploaded_files.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(files) {
+            // files is like { piece_identite: "path/to/file.pdf", extrait_naissance: "path/to/file.jpg" }
+            console.log(files);
+
+            if(files.piece_identite) {
+            
+              console.log(files.piece_identite);
+
+                $('#view_piece_identite')
+                    .attr('href',"../assets/uploads/files_uploads/"+ files.piece_identite)
+                    .removeClass('d-none');
+            }
+
+            if(files.extrait_naissance) {
+                $('#view_extrait_naissance')
+                    .attr('href', "../assets/uploads/files_uploads/"+files.extrait_naissance)
+                    .removeClass('d-none');
+            }
+        },
+        error: function() {
+            console.log("Erreur lors de la récupération des fichiers");
+        }
+    });
+
 
   });
 </script>

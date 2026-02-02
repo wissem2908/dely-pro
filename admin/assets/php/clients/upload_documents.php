@@ -21,64 +21,98 @@ try {
     );
 
     $userId = $_SESSION['user_id'];
-    $uploadDir = "../../../../assets/uploads/files_uploads/";
 
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
+    /* ===================== CONFIG ===================== */
 
     $allowedExt = ['pdf', 'jpg', 'jpeg', 'png'];
-    $uploadedFiles = [];
-
     $fields = ['piece_identite', 'extrait_naissance'];
+
+    /* ===================== GET REFERENCE ===================== */
+
+    $req = $bdd->prepare("SELECT reference FROM delypro_inscriptions WHERE id = ?");
+    $req->execute([$userId]);
+    $row = $req->fetch(PDO::FETCH_ASSOC);
+
+    if (!$row || empty($row['reference'])) {
+        throw new Exception("Référence introuvable");
+    }
+
+    $reference = $row['reference'];
+
+    /* ===================== DIRECTORIES ===================== */
+$referenceDir = "../../../../assets/uploads/files_uploads/" . $reference . "/";
+   // $baseDir = __DIR__ . "/../../uploads/files_uploads/";
+  //  $referenceDir = $baseDir . $reference . "/";
+
+    if (!is_dir($referenceDir)) {
+        mkdir($referenceDir, 0777, true);
+    }
+
+    /* ===================== UPLOAD LOOP ===================== */
 
     foreach ($fields as $field) {
 
-        if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== 0) {
+        if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) {
             continue;
         }
 
         $extension = strtolower(pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION));
 
         if (!in_array($extension, $allowedExt)) {
-            echo json_encode([
-                'status' => 'error',
-                'message' => "Format non autorisé : $field"
-            ]);
-            exit;
+            throw new Exception("Format non autorisé : $field");
         }
 
-        $filename = $field . "_" . $userId . "_" . time() . "." . $extension;
-        $destination = $uploadDir . $filename;
+        /* ===== DELETE OLD FILE OF SAME TYPE ONLY ===== */
+
+        $old = $bdd->prepare("
+            SELECT filename, file_path
+            FROM delypro_documents
+            WHERE inscription_id = ?
+              AND document_type = ?
+            LIMIT 1
+        ");
+        $old->execute([$userId, $field]);
+        $oldFile = $old->fetch(PDO::FETCH_ASSOC);
+
+        if ($oldFile) {
+            $oldPath = $oldFile['file_path'] . $oldFile['filename'];
+            if (file_exists($oldPath)) {
+                unlink($oldPath); // deletes ONLY this file
+            }
+
+            $bdd->prepare("
+                DELETE FROM delypro_documents
+                WHERE inscription_id = ?
+                  AND document_type = ?
+            ")->execute([$userId, $field]);
+        }
+
+        /* ===== CREATE NEW FILE ===== */
+
+        $filename = strtoupper($field) . "_" . $userId . "_" . time() . "." . $extension;
+        $destination = $referenceDir . $filename;
 
         if (!move_uploaded_file($_FILES[$field]['tmp_name'], $destination)) {
-            echo json_encode([
-                'status' => 'error',
-                'message' => "Échec upload : $field"
-            ]);
-            exit;
+            throw new Exception("Échec upload : $field");
         }
 
-        $uploadedFiles[] = $filename;
-    }
+        /* ===== INSERT DB RECORD ===== */
 
-    if (empty($uploadedFiles)) {
-        echo json_encode([
-            'status' => 'error',
-            'message' => 'Aucun fichier reçu'
+        $insert = $bdd->prepare("
+            INSERT INTO delypro_documents
+            (inscription_id, reference, document_type, filename, file_path, file_extension, file_size)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ");
+        $insert->execute([
+            $userId,
+            $reference,
+            $field,
+            $filename,
+            $referenceDir,
+            $extension,
+            $_FILES[$field]['size']
         ]);
-        exit;
     }
-
-    // Save filenames (comma separated)
-    $filesString = implode(',', $uploadedFiles);
-
-    $update = $bdd->prepare("
-        UPDATE delypro_inscriptions
-        SET pdf_file = ?, statut = 'en_cours'
-        WHERE id = ?
-    ");
-    $update->execute([$filesString, $userId]);
 
     echo json_encode([
         'status' => 'success',
