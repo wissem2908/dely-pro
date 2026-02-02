@@ -181,7 +181,10 @@
                             <div class="d-flex align-items-center justify-content-center">
                                 <span class="counter-value fs-1 fw-bold text-dark" data-toggle="counter-up">2004</span>
                             </div>
-                            <p class="text-white mb-0">Année de création</p>
+                             <div class="d-flex align-items-center justify-content-center">
+                                <p class="text-white mb-0">Année de création</p>
+                             </div>
+                            
                         </div>
                     </div>
 
@@ -190,17 +193,23 @@
                             <div class="d-flex align-items-center justify-content-center">
                                 <span class="counter-value fs-1 fw-bold text-white" data-toggle="counter-up">762</span>
                                 <span class="fs-4 text-white ms-1">M</span>
+                                
                             </div>
-                            <p class="mb-0 text-white">Capital social (DA)</p>
+                             <div class="d-flex align-items-center justify-content-center">
+                                  <p class="mb-0 text-white ">Capital social (DA)</p>
+                             </div>
+                          
                         </div>
                     </div>
 
-                    <div class="col-sm-4">
+                      <div class="col-sm-4">
                         <div class="bg-primary rounded p-4">
                             <div class="d-flex align-items-center justify-content-center">
-                                <span class="counter-value fs-1 fw-bold text-dark" data-toggle="counter-up">10</span>
+                                <h4 class=" fw-bold text-dark" >Territoire national</h4>
                             </div>
-                            <p class="text-white mb-0">Collaborateurs</p>
+                             <div class="d-flex align-items-center justify-content-center">
+                            <p class="text-white mb-0">Intervention</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -233,11 +242,10 @@
                         <div class="service-content-inner">
                             <h4 class="mb-3 service-title">
                                 <i class="fas fa-tasks fa-lg text-primary me-2"></i>
-                                Gestion immobilière
+                                Promotion immobilière 
                             </h4>
                             <p class="mb-4">
-
-                                Valorisation des biens immobiliers, entretien y compris des ascenseurs, suivi financier et conformité légale
+                                Conception, réalisation, rénovation et commercialisation de projets immobiliers, comprenant des logements promotionnels, ainsi que des locaux commerciaux et professionnels, destinés à la vente ou à la location, conformément à la réglementation en vigueur.
                             </p>
                         </div>
                     </div>
@@ -254,11 +262,10 @@
                         <div class="service-content-inner">
                             <h4 class="mb-3 service-title">
                                 <i class="fas fa-building fa-lg text-primary me-2"></i>
-                                Promotion immobilière
+                              Aménagement foncier et développement urbain
                             </h4>
                             <p class="mb-4">
-                                Conception et réalisation de projets immobiliers destinés à répondre aux besoins
-                                en logements promotionnels.
+                               Acquisition, aménagement, viabilisation et valorisation d’assiettes foncières en vue de leur exploitation ou de leur intégration dans des projets immobiliers, dans le respect des instruments d’urbanisme.
                             </p>
                         </div>
                     </div>
@@ -275,11 +282,10 @@
                         <div class="service-content-inner">
                             <h4 class="mb-3 service-title">
                                 <i class="fas fa-project-diagram fa-lg text-primary me-2"></i>
-                                Développement de projets
+                                Gestion et administration de biens immobiliers
                             </h4>
                             <p class="mb-4">
-                                Études, planification et développement de programmes immobiliers en adéquation
-                                avec les orientations stratégiques.
+                              Gestion locative, administration, entretien, maintenance et exploitation de biens immobiliers à usage d’habitation, commercial, professionnel ou artisanal.
                             </p>
                         </div>
                     </div>
@@ -296,19 +302,17 @@
                         <div class="service-content-inner">
                             <h4 class="mb-3 service-title">
                                 <i class="fas fa-map-marked-alt fa-lg text-primary me-2"></i>
-                                Aménagement du foncier
+                               Installation et maintenance des équipements de levage
                             </h4>
                             <p class="mb-4">
-                                Valorisation, aménagement et optimisation du foncier dans une logique
-                                de développement urbain durable.
-                            </p>
+                              Installation, réparation et entretien des ascenseurs, monte-charges et autres appareils similaires                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Service 4 -->
-            <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
+            <!-- <div class="col-md-6 col-lg-2  wow fadeInUp service-title" data-wow-delay="0.7s">
                 <div class="service-item bg-light rounded ">
                     <div class="service-img">
                         <img src="img/service-4.jpg" class="img-fluid w-100 rounded-top" alt="Suivi des projets">
@@ -327,7 +331,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- Button -->
