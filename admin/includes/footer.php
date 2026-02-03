@@ -10,6 +10,15 @@
     <!--! END: Apps Init !-->
     <!--! BEGIN: Theme Customizer  !-->
     <script src="assets/js/theme-customizer-init.min.js"></script>
+
+        <script src="assets/vendors/js/circle-progress.min.js"></script>
+    <script src="assets/vendors/js/dataTables.min.js"></script>
+    <script src="assets/vendors/js/dataTables.bs5.min.js"></script>
+    <script src="assets/vendors/js/tagify.min.js"></script>
+    <script src="assets/vendors/js/tagify-data.min.js"></script>
+    <script src="assets/vendors/js/quill.min.js"></script>
+    <script src="assets/vendors/js/select2.min.js"></script>
+    <script src="assets/vendors/js/select2-active.min.js"></script>
     <!--! END: Theme Customizer !-->
 </body>
 

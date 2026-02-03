@@ -65,10 +65,10 @@ class DELYPRO_PDF extends TCPDF
 
         $footerHtml = '
         <div style="text-align:center; line-height:1.4;">
-         SOCIÉTÉ EPE DELYPRO SPA filiale du groupe CNERU au capital de 762 000 000.00 D   <br> 
-Raison sociale : | RC : 04B965652 | NIF : 00041609656523500000<br>
+       SOCIÉTÉ EPE DELYPRO SPA filiale du groupe CNERU au capital de 762 000 000.00 D       <br> 
+Raison sociale : | RC : 04B965652 | NIF : 00041609656523500000 | NIS :000416120873744<br>
 Adresse :  Lotissement Mohamed Saidoune Bt : B n°14, ben Omar, Kouba<br>
-Tél / fax : +213 (0)28.46.66.83| E-mail : delypro@gmail.com <br>
+Tél / fax : +213 (0)28.46.66.83| E-mail : contact@delypro.dz | Web : www.delypro.dz<br>
 
         </div>';
 
@@ -102,7 +102,7 @@ $pdf->SetTitle('Preuve d\'inscription');
 $pdf->SetSubject('Attestation');
 
 // Page setup
-$pdf->SetMargins(20, 50, 20);
+$pdf->SetMargins(20, 45, 20);
 $pdf->SetHeaderMargin(10);
 $pdf->SetFooterMargin(25);
 $pdf->SetAutoPageBreak(true, 35);
@@ -115,7 +115,7 @@ $pdf->AddPage();
 // }
 
 // --- Header Title ---
-$pdf->SetFont('dejavusans', 'B', 16);
+$pdf->SetFont('dejavusans', 'B', 12);
 $pdf->SetTextColor(0, 51, 102); // dark blue
 // $pdf->Ln(20); // spacing from logo
 $pdf->Cell(0, 20, 'FICHE D\'INSCRIPTION', 0, 1, 'C');
@@ -124,7 +124,7 @@ $pdf->Cell(0, 20, 'FICHE D\'INSCRIPTION', 0, 1, 'C');
 // $pdf->SetLineWidth(1);
 // $pdf->SetDrawColor(0, 51, 102);
 // $pdf->Line(30, $pdf->GetY(), $pdf->getPageWidth()-30, $pdf->GetY());
-$pdf->Ln(10);
+$pdf->Ln(3);
 
 // --- Body ---
 // $pdf->SetFont('helvetica', '', 14); // clean, professional, bigger text
@@ -147,7 +147,7 @@ $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sitesHtml = '
 <table border="1" cellpadding="6">
     <thead>
-        <tr style="background-color:#f2f2f2;">
+        <tr style="background-color:#f2f2f2;text-align:center;">
             <th width="20%"><b>Wilaya</b></th>
             <th width="50%"><b>Projet</b></th>
             <th width="30%"><b>Typologie</b></th>
@@ -170,7 +170,7 @@ $sitesHtml .= '</tbody></table><br>';
 
 
 
-$pdf->SetFont('dejavusans', '', 14);
+$pdf->SetFont('dejavusans', '', 10);
 $pdf->SetTextColor(0, 0, 0);
 
 $body = "
@@ -213,7 +213,7 @@ $pdf->Ln(5);
 
 // Labels
 $pdf->setRTL(false);
-$pdf->SetFont('dejavusans', '', 11);
+$pdf->SetFont('dejavusans', '', 10);
 $pdf->Cell(40, 8, 'Code Utilisateur :', 0, 0);
 
 // Username box
@@ -280,7 +280,7 @@ $pdf->writeHTMLCell(
 );
 
 $pdf->Ln(6);
-$pdf->SetFont('dejavusans', '', 12);
+$pdf->SetFont('dejavusans', '', 10);
 $pdf->SetTextColor(0, 0, 0);
 
 $test2 = "
@@ -311,7 +311,7 @@ $qrUrl = "http://delypro.dz/inscription_details.php?ref=$reference";
 $pdf->write2DBarcode($qrUrl, 'QRCODE,H', 160, "", 45, 45, $qrStyle, 'N');
 
 // --- Footer ---
-$pdf->SetFont('dejavusans', 'I', 14);
+$pdf->SetFont('dejavusans', 'I', 10);
 $pdf->SetTextColor(100, 100, 100);
 // $pdf->MultiCell(0, 7, "Ce document est généré électroniquement et fait foi.", 0, 'C', false, 1, '', '', true);
 
