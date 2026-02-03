@@ -54,6 +54,36 @@ try {
         $id
     ]);
 
+
+    /********************************** notification ******************************************* */
+
+    $message = '';
+switch($statut) {
+    case 'en_attente':
+        $message = "Votre inscription est en attente.";
+        break;
+    case 'en_cours':
+        $message = "Votre inscription est en cours de traitement.";
+        break;
+    case 'valide':
+        $message = "Votre inscription a été validée.";
+        break;
+    case 'refuse':
+        $message = "Votre inscription a été refusée. Motif: $motif";
+        break;
+}
+
+// Insert notification for the user
+$notifStmt = $bdd->prepare("
+    INSERT INTO notifications (inscription_id, status, message)
+    VALUES ( ?, ?, ?)
+");
+$notifStmt->execute([
+          // the user related to the inscription
+    $id,              // inscription id
+    $statut,
+    $message
+]);
     echo json_encode([
         'success' => true,
         'message' => 'Status updated'

@@ -162,7 +162,7 @@ include('includes/footer.php');
                 url: "assets/php/clients/get_clients.php",
                 method: "GET",
                 success: function(response) {
-                    console.log(response);
+               
 
                     var data = JSON.parse(response);
                     var list = "";
@@ -224,29 +224,29 @@ include('includes/footer.php');
 
     let currentId = null;
 
-    $(document).on('change', '.change-status', function() {
-        const status = $(this).val();
-        currentId = $(this).data('id');
+    // $(document).on('change', '.change-status', function() {
+    //     const status = $(this).val();
+    //     currentId = $(this).data('id');
 
-        if (status === 'refuse') {
-            $('#motifText').val('');
-            $('#motifModal').modal('show');
-        } else {
-            updateStatus(currentId, status, null);
-        }
-    });
+    //     if (status === 'refuse') {
+    //         $('#motifText').val('');
+    //         $('#motifModal').modal('show');
+    //     } else {
+    //         updateStatus(currentId, status, null);
+    //     }
+    // });
 
-    $('#confirmRefus').on('click', function() {
-        const motif = $('#motifText').val().trim();
+    // $('#confirmRefus').on('click', function() {
+    //     const motif = $('#motifText').val().trim();
 
-        if (!motif) {
-            alert('Motif obligatoire');
-            return;
-        }
+    //     if (!motif) {
+    //         alert('Motif obligatoire');
+    //         return;
+    //     }
 
-        updateStatus(currentId, 'refuse', motif);
-        $('#motifModal').modal('hide');
-    });
+    //     updateStatus(currentId, 'refuse', motif);
+    //     $('#motifModal').modal('hide');
+    // });
 
 
     /************************************************************* */
