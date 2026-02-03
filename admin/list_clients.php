@@ -4,6 +4,12 @@ include('includes/header.php');
 ?>
 
 
+<style>
+    .custom-file, .custom-select, .form-control, .form-select, input {
+        padding: 0px;
+    }
+</style>
+
 <main class="nxl-container">
     <div class="nxl-content">
         <!-- [ page-header ] start -->
@@ -56,37 +62,7 @@ include('includes/header.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="single-item">
-                                            <td>
-                                                <div class="item-checkbox ms-1">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input checkbox" id="checkBox_1">
-                                                        <label class="custom-control-label" for="checkBox_1"></label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript:void(0);" class="fw-bold">#321456</a></td>
-                                            <td>
-                                                <a href="javascript:void(0)" class="hstack gap-3">
-                                                    <div class="avatar-image avatar-md">
-                                                        <img src="assets/images/avatar/1.png" alt="" class="img-fluid">
-                                                    </div>
-                                                    <div>
-                                                        <span class="text-truncate-1-line">Alexandra Della</span>
-                                                        <small class="fs-12 fw-normal text-muted">alex@example.com</small>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>A business proposal for a new product or service</td>
-                                            <td class="fw-bold text-dark">$249.99 USD</td>
-                                            <td>2023-04-25, 03:42PM</td>
-                                            <td>
-                                                <div class="badge bg-soft-success text-success">Sent</div>
-                                            </td>
-                                            <td>
 
-                                            </td>
-                                        </tr>
 
 
 
@@ -127,6 +103,25 @@ include('includes/header.php');
         </footer> -->
     <!-- [ Footer ] end -->
 </main>
+
+<div class="modal fade" id="motifModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Motif du refus</h5>
+            </div>
+            <div class="modal-body">
+                <textarea id="motifText" class="form-control" rows="4"
+                    placeholder="Motif obligatoire..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="confirmRefus">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--! ================================================================ !-->
 <!--! [End] Main Content !-->
 <!--! ================================================================ !-->
@@ -147,79 +142,186 @@ include('includes/footer.php');
 ?>
 
 <script>
-    "use strict";
+    // "use strict";
+    // $(document).ready(function() {
+    //     $("#proposalList").DataTable({
+    //         pageLength: 10,
+    //         lengthMenu: [10, 20, 50, 100, 200, 500]
+    //     })
+    // })
+
+
+    /************************************** list clients *************************************************** */
+
+
+
     $(document).ready(function() {
-        $(".progress-1").circleProgress({
-            max: 100,
-            value: 50,
-            textFormat: function() {
-                return "$450 USD"
-            }
-        }), $(".progress-2").circleProgress({
-            max: 100,
-            value: 60,
-            textFormat: function() {
-                return "$550 USD"
-            }
-        }), $(".progress-3").circleProgress({
-            max: 100,
-            value: 70,
-            textFormat: function() {
-                return "$850 USD"
-            }
-        }), $(".progress-4").circleProgress({
-            max: 100,
-            value: 80,
-            textFormat: function() {
-                return "$900 USD"
-            }
-        })
-    }), $(document).ready(function() {
-        $("#proposalList").DataTable({
-            pageLength: 10,
-            lengthMenu: [10, 20, 50, 100, 200, 500]
-        })
-    }), $(document).ready(function() {
-        $("#checkAllProposal").change(function() {
-            this.checked ? $(".checkbox").each(function() {
-                this.checked = !0, $(this).parent().parent().parent().parent().addClass("selected")
-            }) : $(".checkbox").each(function() {
-                this.checked = !1, $(this).parent().parent().parent().parent().removeClass("selected")
+
+        function getClients() {
+            $.ajax({
+                url: "assets/php/clients/get_clients.php",
+                method: "GET",
+                success: function(response) {
+                    console.log(response);
+
+                    var data = JSON.parse(response);
+                    var list = "";
+
+                    for (var i = 0; i < data.length; i++) {
+                        list += `<tr>
+                                 <td>    ${data[i].reference}</td>
+                                    <td>    ${data[i].nom}</td>
+                                     <td>    ${data[i].prenom}</td>
+                                     <td>    ${data[i].telephone}</td>
+                                     <td>${data[i].email}</td>
+                                     <td> ${data[i].created_at}</td>
+                              <td>
+                                <div class="badge status-badge
+                                    ${data[i].statut === 'en_attente' ? 'bg-soft-warning text-warning' : ''}
+                                    ${data[i].statut === 'en_cours' ? 'bg-soft-info text-info' : ''}
+                                    ${data[i].statut === 'valide' ? 'bg-soft-success text-success' : ''}
+                                    ${data[i].statut === 'refuse' ? 'bg-soft-danger text-danger' : ''}">
+                                    ${data[i].statut.replace('_',' ')}
+                                </div>
+
+                                <select class="form-select form-select-sm mt-1 change-status"
+                                        data-id="${data[i].id}">
+                                    <option value="en_attente" ${data[i].statut === 'en_attente' ? 'selected' : ''}>En attente</option>
+                                    <option value="en_cours" ${data[i].statut === 'en_cours' ? 'selected' : ''}>En cours</option>
+                                    <option value="valide" ${data[i].statut === 'valide' ? 'selected' : ''}>Validé</option>
+                                    <option value="refuse" ${data[i].statut === 'refuse' ? 'selected' : ''}>Refusé</option>
+                                </select>
+                            </td>
+
+                                     <td>
+                                     <a href="proposal-view.html" class="avatar-text avatar-md">
+                                                            <i class="feather feather-eye"></i>
+                                                        </a>
+                                                        </td>
+                                </tr>`
+
+                    }
+                    $("#proposalList tbody").append(list)
+                    $("#proposalList").DataTable({
+                        destroy: true,
+                        order: [],
+                        pageLength: 10,
+                        lengthMenu: [10, 20, 50, 100, 200, 500]
+                    });
+
+
+                }
             })
-        }), $(".checkbox").click(function() {
-            var e;
-            $(this).is(":checked") ? (e = 0, $(".checkbox").each(function() {
-                this.checked || (e = 1)
-            }), 0 == e && $("#checkAllProposal").prop("checked", !0)) : $("#checkAllProposal").prop("checked", !1)
-        }), $(".items-wrapper").on("click", "input:checkbox", function() {
-            $(this).closest(".single-items").toggleClass("selected", this.checked)
-        }), $(".items-wrapper input:checkbox:checked").closest(".single-items").addClass("selected")
-    }), $(document).ready(function() {
-        new Quill('[data-editor-target="editor"]', {
-            placeholder: "Compose an epic...",
-            theme: "snow"
-        })
-    }), $(document).ready(function() {
-        $('[data-alert-target="alertMessage"]').click(function(e) {
-            e.preventDefault();
-            const t = Swal.mixin({
-                customClass: {
-                    confirmButton: "btn btn-success m-1",
-                    cancelButton: "btn btn-danger m-1"
-                },
-                buttonsStyling: !1
-            });
-            t.fire({
-                title: "Are you sure?",
-                text: "You want to sent this Proposal!",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "Yes, sent it!",
-                cancelButtonText: "No, cancel!",
-                reverseButtons: !0
-            }).then(e => {
-                e.value ? t.fire("Sent!", "Proposal sent successfully.", "success") : e.dismiss === Swal.DismissReason.cancel && t.fire("Cancelled", "Your imaginary file is safe :)", "error")
-            })
-        })
+        }
+
+        getClients()
+    })
+    /************************************** end list clients *********************************************** */
+
+
+
+    /*************************************** CHANGE STATUS ***************************************************/
+
+    let currentId = null;
+
+    $(document).on('change', '.change-status', function() {
+        const status = $(this).val();
+        currentId = $(this).data('id');
+
+        if (status === 'refuse') {
+            $('#motifText').val('');
+            $('#motifModal').modal('show');
+        } else {
+            updateStatus(currentId, status, null);
+        }
     });
+
+    $('#confirmRefus').on('click', function() {
+        const motif = $('#motifText').val().trim();
+
+        if (!motif) {
+            alert('Motif obligatoire');
+            return;
+        }
+
+        updateStatus(currentId, 'refuse', motif);
+        $('#motifModal').modal('hide');
+    });
+
+
+    /************************************************************* */
+
+    function updateStatus(id, statut, motif) {
+        $.ajax({
+            url: "assets/php/clients/update_status.php",
+            method: "POST",
+            dataType: "json",
+            data: {
+                id: id,
+                statut: statut,
+                motif: motif
+            },
+            success: function(res) {
+                if (!res.success) {
+                    alert(res.message);
+                }
+            }
+        });
+    }
+
+    /*********************************************************** */
+    function updateBadge(selectEl, status) {
+    const badge = $(selectEl).closest('td').find('.status-badge');
+
+    badge
+        .removeClass(
+            'bg-soft-warning text-warning ' +
+            'bg-soft-info text-info ' +
+            'bg-soft-success text-success ' +
+            'bg-soft-danger text-danger'
+        );
+
+    const map = {
+        en_attente: ['bg-soft-warning', 'text-warning', 'En attente'],
+        en_cours: ['bg-soft-info', 'text-info', 'En cours'],
+        valide: ['bg-soft-success', 'text-success', 'Validé'],
+        refuse: ['bg-soft-danger', 'text-danger', 'Refusé']
+    };
+
+    badge
+        .addClass(map[status][0] + ' ' + map[status][1])
+        .text(map[status][2]);
+}
+
+/************************************************************* */
+$(document).on('change', '.change-status', function () {
+    const status = $(this).val();
+    const id = $(this).data('id');
+    const selectEl = this;
+
+    if (status === 'refuse') {
+        currentId = id;
+        currentSelect = selectEl;
+        $('#motifText').val('');
+        $('#motifModal').modal('show');
+    } else {
+        updateBadge(selectEl, status); // ✅ instant UI update
+        updateStatus(id, status, null);
+    }
+});
+/******************************* MOTIF TEXT **************************************** */
+let currentSelect = null;
+
+$('#confirmRefus').on('click', function () {
+    const motif = $('#motifText').val().trim();
+
+    if (!motif) {
+        alert('Motif obligatoire');
+        return;
+    }
+
+    updateBadge(currentSelect, 'refuse'); // ✅ badge turns red
+    updateStatus(currentId, 'refuse', motif);
+    $('#motifModal').modal('hide');
+});
 </script>
