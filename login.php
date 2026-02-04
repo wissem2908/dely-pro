@@ -153,7 +153,12 @@ $(document).ready(function() {
                         timer: 2000,
                         showConfirmButton: false
                     }).then(() => {
-                        window.location.href = './admin';
+                        if(res.role === 'admin')
+                                 window.location.href = './admin';
+                        else   {
+                                 window.location.href = './admin/demandes.php';
+                        }
+                   
                     });
                 } else {
                     Swal.fire({

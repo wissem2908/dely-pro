@@ -1,7 +1,22 @@
-<?php
 
-include('includes/header.php');
+
+<?php
+// index.php — start of file
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Role check
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: demandes.php');
+    exit;
+}
+
+// Only now include HTML output
+include 'includes/header.php';
 ?>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.all.min.js"></script>
 
