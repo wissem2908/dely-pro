@@ -186,7 +186,7 @@ document.addEventListener("click", function (e) {
 
                     <div class="col-12">
                         <label class="form-label">NIN (Numéro d'Identification National) <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="nin" inputmode="numeric" required>
+                        <input type="text" class="form-control" name="nin" id="nin" inputmode="numeric" maxlength="18" required>
                     </div>
 
                     <div class="col-12">
@@ -318,4 +318,13 @@ function wilayas(){
     });
 });
 
+</script>
+
+<script>
+$(document).ready(function() {
+    $(document).on('input', '#nin', function() {
+        console.log('Input event triggered');
+        this.value = this.value.replace(/\D/g, '').substring(0, 18);
+    });
+});
 </script>
