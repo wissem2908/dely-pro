@@ -3,10 +3,13 @@ session_start();
 include_once './../config.php';
 header('Content-Type: application/json');
 
-if(!isset($_SESSION['user_id'])) {
-    echo json_encode([]);
-    exit;
+$userId = null;
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+    $userId = $_POST['id'];
+} else {
+    $userId = $_SESSION['user_id'];
 }
+
 
 try {
     $bdd = new PDO(
@@ -16,7 +19,7 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 
-    $userId = $_SESSION['user_id'];
+
 
     $stmt = $bdd->prepare("
         SELECT *

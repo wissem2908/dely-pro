@@ -5,7 +5,11 @@ include('includes/header.php');
 
 
 <style>
-    .custom-file, .custom-select, .form-control, .form-select, input {
+    .custom-file,
+    .custom-select,
+    .form-control,
+    .form-select,
+    input {
         padding: 0px;
     }
 </style>
@@ -58,7 +62,7 @@ include('includes/header.php');
                                             <th>Email</th>
                                             <th>Date d'inscription</th>
                                             <th>Etat</th>
-                                            <th class="text-end">Actions</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -162,7 +166,7 @@ include('includes/footer.php');
                 url: "assets/php/clients/get_clients.php",
                 method: "GET",
                 success: function(response) {
-               
+
 
                     var data = JSON.parse(response);
                     var list = "";
@@ -193,8 +197,8 @@ include('includes/footer.php');
                                 </select>
                             </td>
 
-                                     <td>
-                                     <a href="proposal-view.html" class="avatar-text avatar-md">
+                                     <td class="text-center">
+                                     <a href="demandes.php?id=${data[i].id}" class="avatar-text avatar-md d-inline-flex justify-content-center align-items-center">
                                                             <i class="feather feather-eye"></i>
                                                         </a>
                                                         </td>
@@ -271,57 +275,57 @@ include('includes/footer.php');
 
     /*********************************************************** */
     function updateBadge(selectEl, status) {
-    const badge = $(selectEl).closest('td').find('.status-badge');
+        const badge = $(selectEl).closest('td').find('.status-badge');
 
-    badge
-        .removeClass(
-            'bg-soft-warning text-warning ' +
-            'bg-soft-info text-info ' +
-            'bg-soft-success text-success ' +
-            'bg-soft-danger text-danger'
-        );
+        badge
+            .removeClass(
+                'bg-soft-warning text-warning ' +
+                'bg-soft-info text-info ' +
+                'bg-soft-success text-success ' +
+                'bg-soft-danger text-danger'
+            );
 
-    const map = {
-        en_attente: ['bg-soft-warning', 'text-warning', 'En attente'],
-        en_cours: ['bg-soft-info', 'text-info', 'En cours'],
-        valide: ['bg-soft-success', 'text-success', 'Validé'],
-        refuse: ['bg-soft-danger', 'text-danger', 'Refusé']
-    };
+        const map = {
+            en_attente: ['bg-soft-warning', 'text-warning', 'En attente'],
+            en_cours: ['bg-soft-info', 'text-info', 'En cours'],
+            valide: ['bg-soft-success', 'text-success', 'Validé'],
+            refuse: ['bg-soft-danger', 'text-danger', 'Refusé']
+        };
 
-    badge
-        .addClass(map[status][0] + ' ' + map[status][1])
-        .text(map[status][2]);
-}
-
-/************************************************************* */
-$(document).on('change', '.change-status', function () {
-    const status = $(this).val();
-    const id = $(this).data('id');
-    const selectEl = this;
-
-    if (status === 'refuse') {
-        currentId = id;
-        currentSelect = selectEl;
-        $('#motifText').val('');
-        $('#motifModal').modal('show');
-    } else {
-        updateBadge(selectEl, status); // ✅ instant UI update
-        updateStatus(id, status, null);
-    }
-});
-/******************************* MOTIF TEXT **************************************** */
-let currentSelect = null;
-
-$('#confirmRefus').on('click', function () {
-    const motif = $('#motifText').val().trim();
-
-    if (!motif) {
-        alert('Motif obligatoire');
-        return;
+        badge
+            .addClass(map[status][0] + ' ' + map[status][1])
+            .text(map[status][2]);
     }
 
-    updateBadge(currentSelect, 'refuse'); // ✅ badge turns red
-    updateStatus(currentId, 'refuse', motif);
-    $('#motifModal').modal('hide');
-});
+    /************************************************************* */
+    $(document).on('change', '.change-status', function() {
+        const status = $(this).val();
+        const id = $(this).data('id');
+        const selectEl = this;
+
+        if (status === 'refuse') {
+            currentId = id;
+            currentSelect = selectEl;
+            $('#motifText').val('');
+            $('#motifModal').modal('show');
+        } else {
+            updateBadge(selectEl, status); // ✅ instant UI update
+            updateStatus(id, status, null);
+        }
+    });
+    /******************************* MOTIF TEXT **************************************** */
+    let currentSelect = null;
+
+    $('#confirmRefus').on('click', function() {
+        const motif = $('#motifText').val().trim();
+
+        if (!motif) {
+            alert('Motif obligatoire');
+            return;
+        }
+
+        updateBadge(currentSelect, 'refuse'); // ✅ badge turns red
+        updateStatus(currentId, 'refuse', motif);
+        $('#motifModal').modal('hide');
+    });
 </script>

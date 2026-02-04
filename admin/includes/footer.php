@@ -76,11 +76,18 @@ $(document).on('click', '#notificationDropdown', function () {
     $(this).removeClass('unread');
 
     // Call PHP to mark as read
-    $.post('assets/php/clients/mark_notification_read.php', { id: notifId }, function(response) {
-        console.log('Notification marked as read');
-        // Update unread counter
+
+    $.ajax({
+        url:'assets/php/clients/mark_notification_read.php',
+        method: 'POST',
+        success: function(response) {
+            console.log('All notifications marked as read');
+             // Update unread counter
         getNotifications();
-    }, 'json');
+        }
+    })
+
+
 });
 
     </script>
