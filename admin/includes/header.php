@@ -84,8 +84,8 @@ $role = $_SESSION['role'] ?? null;
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="#" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-clock"></i></span>
+                        <a href="news.php" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-file-text"></i></span>
                             <span class="nxl-mtext">Actualités</span><span class="nxl-arrow"></span>
                         </a>
                     </li>
