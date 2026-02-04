@@ -508,7 +508,7 @@
             <h1 class="display-4">Actualités et Articles</h1>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" id="news-container">
 
             <!-- News Item 1 -->
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -760,4 +760,58 @@
         });
 
     });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        function getNews(){
+
+        $.ajax({
+            url:'assets/php/fetch_news.php',
+            type:'GET',
+       
+            success:function(data){
+    console.log(data)
+
+    var data = JSON.parse(data);
+
+    var newsContent = "";
+
+    for(var i = 0; i <data.length ;i++){
+        // Suppose data[i].date = "2026-01-19"
+let rawDate = data[i].date; 
+let dateObj = new Date(rawDate);
+
+// Array of French month names
+let months = [
+  "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+  "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+];
+
+let formattedDate = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+newsContent+=`   <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="news-item bg-light rounded overflow-hidden">
+                    <div class="news-img">
+                        <img src="admin/assets/uploads/news_images/${data[i].image}" class="img-fluid w-100" alt="${data[i].title}">
+                    </div>
+                    <div class="news-content p-4">
+                        <h5 class="mb-2">${data[i].title}</h5>
+                        <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>${formattedDate}</p>
+                        <p class="mb-3">${data[i].description}</p>
+                        <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+`
+
+    }
+    $('#news-container').html(newsContent); 
+}
+        })
+        }
+         getNews()
+    })
 </script>
