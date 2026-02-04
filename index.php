@@ -221,7 +221,37 @@
 <!-- About End -->
 
 </div>
+<style>
+    /* Make cards same height */
+.service-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
+/* Content area stretches */
+.service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inner content stretches (optional) */
+.service-content-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Make columns stretch */
+.row.justify-content-center .col-md-6, 
+.row.justify-content-center .col-lg-2 {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 30px; /* optional spacing */
+}
+</style>
 <!-- Services Start -->
 <div class=" service py-5" id="service">
     <div class="container-fluid py-5">
