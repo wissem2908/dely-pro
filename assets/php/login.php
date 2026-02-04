@@ -30,7 +30,8 @@ try {
 
         $response = [
             'status' => 'success',
-            'message' => 'Connexion réussie.'
+            'message' => 'Connexion réussie.',
+            'role'=>$user['role']
         ];
     } else {
         $response = [

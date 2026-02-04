@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $role = $_SESSION['role'] ?? null;
 ?>
 <!DOCTYPE html>
@@ -45,7 +47,7 @@ $role = $_SESSION['role'] ?? null;
     <nav class="nxl-navigation">
         <div class="navbar-wrapper">
             <div class="m-header">
-                <a href="index.html" class="b-brand">
+                <a href="/" class="b-brand">
                     <!-- ========   change your logo hear   ============ -->
                     <img src="../assets/images/delypro-logo.png" alt="" class="logo logo-lg" width="250" />
                     <img src="../assets/images/delypro-logo.png" alt="" class="logo logo-sm" />

@@ -106,22 +106,35 @@ include('includes/header.php');
     <div class="page-header">
       <div class="page-header-left d-flex align-items-center">
         <div class="page-header-title">
-          <h5 class="m-b-10">Dashboard</h5>
+          <h5 class="m-b-10">Suivi de l’inscription</h5>
         </div>
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Dashboard</li>
+          <li class="breadcrumb-item">Suivi de l’inscription</li>
         </ul>
       </div>
       <div class="page-header-right ms-auto">
         <div class="page-header-right-items">
-          <div class="d-flex d-md-none">
-            <a href="javascript:void(0)" class="page-header-right-close-toggle">
+          <?php
+if($_SESSION['role'] === 'admin'){
+
+?>
+          <div class="d-flex ">
+            <a href="javascript:void(0)" onclick="goBack()" class="page-header-right-close-toggle">
               <i class="feather-arrow-left me-2"></i>
-              <span>Back</span>
+              <span>Retour</span>
             </a>
+            <script>
+              function goBack() {
+                window.history.back();
+              }
+            </script>
           </div>
 
+
+          <?php
+}
+          ?>
         </div>
 
       </div>
@@ -554,7 +567,7 @@ include('includes/footer.php');
       e.preventDefault();
 
       let formData = new FormData();
-formData.append('id', $('#client_id').val()); 
+      formData.append('id', $('#client_id').val());
       let pieceIdentite = $('#piece_identite')[0].files[0];
       let extraitNaissance = $('#extrait_naissance')[0].files[0];
 
@@ -568,7 +581,7 @@ formData.append('id', $('#client_id').val());
         contentType: false,
         success: function(response) {
           alert('Fichiers téléchargés avec succès');
-           getUploadedFiles()
+          getUploadedFiles()
         },
         error: function() {
           alert('Erreur lors du téléchargement des fichiers');
@@ -579,41 +592,41 @@ formData.append('id', $('#client_id').val());
 
 
     /**************************************** view uploaded files ******************************************************* */
-function getUploadedFiles(){
-    // Load existing uploaded files
-    $.ajax({
-      url: 'assets/php/clients/get_uploaded_files.php',
-      type: 'POST',
-      data: {
-        id: $("#client_id").val()
-      },
-      dataType: 'json',
-      success: function(files) {
-        // files is like { piece_identite: "path/to/file.pdf", extrait_naissance: "path/to/file.jpg" }
-        console.log(files);
+    function getUploadedFiles() {
+      // Load existing uploaded files
+      $.ajax({
+        url: 'assets/php/clients/get_uploaded_files.php',
+        type: 'POST',
+        data: {
+          id: $("#client_id").val()
+        },
+        dataType: 'json',
+        success: function(files) {
+          // files is like { piece_identite: "path/to/file.pdf", extrait_naissance: "path/to/file.jpg" }
+          console.log(files);
 
-        if (files.piece_identite) {
+          if (files.piece_identite) {
 
-          console.log(files.piece_identite);
+            console.log(files.piece_identite);
 
-          $('#view_piece_identite')
-            .attr('href', "../assets/uploads/files_uploads/" + files.piece_identite)
-            .removeClass('d-none');
+            $('#view_piece_identite')
+              .attr('href', "../assets/uploads/files_uploads/" + files.piece_identite)
+              .removeClass('d-none');
+          }
+
+          if (files.extrait_naissance) {
+            $('#view_extrait_naissance')
+              .attr('href', "../assets/uploads/files_uploads/" + files.extrait_naissance)
+              .removeClass('d-none');
+          }
+        },
+        error: function() {
+          console.log("Erreur lors de la récupération des fichiers");
         }
+      });
+    }
 
-        if (files.extrait_naissance) {
-          $('#view_extrait_naissance')
-            .attr('href', "../assets/uploads/files_uploads/" + files.extrait_naissance)
-            .removeClass('d-none');
-        }
-      },
-      error: function() {
-        console.log("Erreur lors de la récupération des fichiers");
-      }
-    });
-}
-
- getUploadedFiles()
+    getUploadedFiles()
 
   });
 </script>
