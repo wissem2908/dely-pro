@@ -16,7 +16,7 @@ try {
     $req = $bdd->prepare("
         SELECT 
         *
-        FROM delypro_inscriptions
+        FROM delypro_inscriptions where role = 'user' and is_archived = 0
         ORDER BY id DESC
     ");
 

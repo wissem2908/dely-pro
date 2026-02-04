@@ -1,3 +1,7 @@
+<?php
+session_start();
+$role = $_SESSION['role'] ?? null;
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -52,26 +56,27 @@
                     <!-- <li class="nxl-item nxl-caption">
                         <label>Navigation</label>
                     </li> -->
-                    <li class="nxl-item nxl-hasmenu">
+                   
+                    <?php if ($role == "admin") {
+
+
+                    ?>
+
+                     <li class="nxl-item nxl-hasmenu">
                         <a href="#" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"></span>
                         </a>
                     </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="demandes.php" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-user"></i></span>
-                            <span class="nxl-mtext">Suivi de l'inscription</span><span class="nxl-arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="list_clients.php" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-users"></i></span>
-                            <span class="nxl-mtext">Demandes d'inscriptions</span><span class="nxl-arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="#" class="nxl-link">
+                        <li class="nxl-item nxl-hasmenu">
+                            <a href="list_clients.php" class="nxl-link">
+                                <span class="nxl-micon"><i class="feather-users"></i></span>
+                                <span class="nxl-mtext">Demandes d'inscriptions</span><span class="nxl-arrow"></span>
+                            </a>
+                        </li>
+
+                                 <li class="nxl-item nxl-hasmenu">
+                        <a href="archives.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-clock"></i></span>
                             <span class="nxl-mtext">Archives</span><span class="nxl-arrow"></span>
                         </a>
@@ -82,6 +87,27 @@
                             <span class="nxl-mtext">Actualités</span><span class="nxl-arrow"></span>
                         </a>
                     </li>
+
+                    <?php
+                    } elseif ($role == "user") {
+                    ?>
+
+                        <li class="nxl-item nxl-hasmenu">
+                            <a href="demandes.php" class="nxl-link">
+                                <span class="nxl-micon"><i class="feather-user"></i></span>
+                                <span class="nxl-mtext">Suivi de l'inscription</span><span class="nxl-arrow"></span>
+                            </a>
+                        </li>
+
+
+                    <?php
+
+
+                    }
+
+                    ?>
+
+           
 
 
                 </ul>
@@ -146,14 +172,14 @@
                             </a>
                         </div>
                     </div>
-                    <div class="nxl-h-item dark-light-theme">
+                    <!-- <div class="nxl-h-item dark-light-theme">
                         <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
                             <i class="feather-moon"></i>
                         </a>
                         <a href="javascript:void(0);" class="nxl-head-link me-0 light-button" style="display: none">
                             <i class="feather-sun"></i>
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="dropdown nxl-h-item">
                         <a class="nxl-head-link me-3" data-bs-toggle="dropdown" href="#" role="button" id="notificationDropdown">
@@ -178,8 +204,8 @@
                                 <div class="d-flex align-items-center">
                                     <img src="assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar" />
                                     <div>
-                                        <h6 class="text-dark mb-0">Alexandra Della</h6>
-                                        <span class="fs-12 fw-medium text-muted">alex@example.com</span>
+                                        <h6 class="text-dark mb-0"><?php echo $_SESSION['nom'] . " " . $_SESSION['prenom']; ?></h6>
+                                        <!-- <span class="fs-12 fw-medium text-muted"></span> -->
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +215,7 @@
                             <div class="dropdown-divider"></div>
                             <a href="./assets/php/logout.php" class="dropdown-item">
                                 <i class="feather-log-out"></i>
-                                <span>Logout</span>
+                                <span>Deconnexion</span>
                             </a>
                         </div>
                     </div>
@@ -198,5 +224,3 @@
             <!--! [End] Header Right !-->
         </div>
     </header>
-
-
