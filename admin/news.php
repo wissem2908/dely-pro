@@ -178,12 +178,12 @@ include('includes/footer.php');
                                 '<span class="text-muted">—</span>';
 
                             let link = item.slug ?
-                                `<a href="news_detail.php?slug=${item.slug}" target="_blank"><i class="feather feather-eye"></i></a>` :
+                                `<a href="../news_details.php?slug=${item.slug}" target="_blank"><i class="feather feather-eye"></i></a>` :
                                 '<span class="text-muted">—</span>';
 
                             html += `
                             <tr>
-                                <td>${item.id}</td>
+                                <td>${index + 1}</td>
                                 <td>${item.title}</td>
                                 <td>${limitText(item.description, 80)}</td>
                                 <td>${item.date_fr}</td>

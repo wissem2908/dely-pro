@@ -496,7 +496,34 @@
         </div>
     </div>
 </div>
+<style>
+    #news-container .col-md-6,
+#news-container .col-lg-4 {
+    display: flex;
+}
 
+.news-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.news-img img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.news-content {
+    flex: 1;
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.news-content .btn {
+    margin-top: auto;
+}
+</style>
 <!-- Project End -->
 <!-- Actualités Start -->
 <div class="container-fluid news py-5" id="news">
@@ -816,7 +843,7 @@ newsContent+=`   <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1
                         <h5 class="mb-2">${data[i].title}</h5>
                         <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>${formattedDate}</p>
                         <p class="mb-3">${limitText(data[i].description, 140)}</p>
-                        <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
+                        <a href="news_details.php?slug=${data[i].slug}" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
                     </div>
                 </div>
             </div>
