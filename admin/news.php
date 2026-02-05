@@ -60,44 +60,44 @@ include 'includes/header.php';
                     </div>
                 </div>
             </div>
-                <div class="row">
+            <div class="row">
 
-                    <div class="col-12">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered align-middle" id="newsTable">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Titre</th>
-                                                <th>Description</th>
-                                                <th>Date</th>
-                                                <th>Image</th>
-                                                <th>Lien</th>
-                                                <th class="text-center">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- rempli par AJAX -->
-                                        </tbody>
-                                    </table>
-                                </div>
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle" id="newsTable">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Titre</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Image</th>
+                                            <th>Lien</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- rempli par AJAX -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-                    <!--! END: [Team Progress] !-->
                 </div>
+
+
+
+
+
+                <!--! END: [Team Progress] !-->
             </div>
-            <!-- [ Main Content ] end -->
         </div>
-        <!-- [ Footer ] start -->
-        <!-- <footer class="footer">
+        <!-- [ Main Content ] end -->
+    </div>
+    <!-- [ Footer ] start -->
+    <!-- <footer class="footer">
             <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
                 <span>Copyright ©</span>
                 <script>
@@ -111,7 +111,7 @@ include 'includes/header.php';
                 <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
             </div>
         </footer> -->
-        <!-- [ Footer ] end -->
+    <!-- [ Footer ] end -->
 </main>
 <!--! ================================================================ !-->
 <!--! [End] Main Content !-->
@@ -144,6 +144,24 @@ include('includes/footer.php');
 
                     let html = '';
 
+
+                    function limitText(html, maxLength = 120) {
+                        // Remove HTML tags
+                        let text = $('<div>').html(html).text();
+
+                        // Trim spaces
+                        text = text.trim();
+
+                        // Limit length
+                        if (text.length > maxLength) {
+                            text = text.substring(0, maxLength) + '...';
+                        }
+
+                        return text;
+                    }
+
+
+
                     if (data.length === 0) {
                         html = `
                         <tr>
@@ -167,7 +185,7 @@ include('includes/footer.php');
                             <tr>
                                 <td>${item.id}</td>
                                 <td>${item.title}</td>
-                                <td>${item.description.substring(0, 80)}...</td>
+                                <td>${limitText(item.description, 80)}</td>
                                 <td>${item.date_fr}</td>
                                 <td>${image}</td>
                                 <td>${link}</td>
