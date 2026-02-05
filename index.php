@@ -779,6 +779,21 @@
 
     var newsContent = "";
 
+    function limitText(html, maxLength = 120) {
+    // Remove HTML tags
+    let text = $('<div>').html(html).text();
+
+    // Trim spaces
+    text = text.trim();
+
+    // Limit length
+    if (text.length > maxLength) {
+        text = text.substring(0, maxLength) + '...';
+    }
+
+    return text;
+}
+
     for(var i = 0; i <data.length ;i++){
         // Suppose data[i].date = "2026-01-19"
 let rawDate = data[i].date; 
@@ -800,7 +815,7 @@ newsContent+=`   <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1
                     <div class="news-content p-4">
                         <h5 class="mb-2">${data[i].title}</h5>
                         <p class="mb-2 text-muted"><i class="far fa-calendar-alt me-2"></i>${formattedDate}</p>
-                        <p class="mb-3">${data[i].description}</p>
+                        <p class="mb-3">${limitText(data[i].description, 140)}</p>
                         <a href="#" class="btn btn-primary rounded-pill px-4">Lire la suite</a>
                     </div>
                 </div>
