@@ -1,5 +1,3 @@
-
-
 <?php
 // index.php — start of file
 
@@ -156,11 +154,12 @@ include('includes/footer.php');
 
 
     $(document).ready(function() {
-var table = $("#proposalList").DataTable({
-    order: [],
-    pageLength: 10,
-    lengthMenu: [10, 20, 50, 100, 200, 500]
-});
+        var table = $("#proposalList").DataTable({
+            order: [],
+            pageLength: 10,
+            lengthMenu: [10, 20, 50, 100, 200, 500]
+        });
+
         function getClients() {
             $.ajax({
                 url: "assets/php/clients/get_archived_clients.php",
@@ -170,7 +169,7 @@ var table = $("#proposalList").DataTable({
 
                     var data = JSON.parse(response);
                     var list = "";
-       table.clear(); // 🔥 clear existing rows
+                    table.clear(); // 🔥 clear existing rows
                     for (var i = 0; i < data.length; i++) {
                         list += `<tr>
                                  <td>    ${data[i].reference}</td>
@@ -195,10 +194,10 @@ var table = $("#proposalList").DataTable({
                                 </tr>`
 
                     }
-     table.draw(); // 🔥 redraw safely
+                    table.draw(); // 🔥 redraw safely
                     $("#proposalList tbody").empty()
                     $("#proposalList tbody").append(list)
-            
+
 
                 }
             })

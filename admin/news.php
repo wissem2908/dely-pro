@@ -190,18 +190,18 @@ include('includes/footer.php');
                                 <td>${image}</td>
                                 <td>${link}</td>
                                <td>
-    <div class="d-inline-flex gap-2">
-        <button class="btn btn-sm btn-outline-primary edit-news"
-                data-id="${item.id}" title="Modifier">
-            <i class="feather feather-edit-2"></i>
-        </button>
+                                                <div class="d-inline-flex gap-2">
+                                                    <button class="btn btn-sm btn-outline-primary edit-news"
+                                                            data-id="${item.id}" title="Modifier">
+                                                        <i class="feather feather-edit-2"></i>
+                                                    </button>
 
-        <button class="btn btn-sm btn-outline-danger delete-news"
-                data-id="${item.id}" title="Supprimer">
-            <i class="feather feather-trash-2"></i>
-        </button>
-    </div>
-</td>
+                                                    <button class="btn btn-sm btn-outline-danger delete-news" id="deleteNewsBtn"
+                                                            data-id="${item.id}" title="Supprimer">
+                                                        <i class="feather feather-trash-2"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
                             </tr>
                         `;
                         });
@@ -216,5 +216,50 @@ include('includes/footer.php');
         }
 
         loadNews();
+
+
+
+        /******************************** delete btn *************************************** */
+$(document).on('click', '#deleteNewsBtn', function() {
+    let newsId = $(this).data('id');
+
+    Swal.fire({
+        title: 'Êtes-vous sûr ?',
+        text: "Cette action supprimera définitivement l'actualité !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6', // blue
+        cancelButtonColor: '#d33',     // red
+        confirmButtonText: 'Oui, supprimer',
+        cancelButtonText: 'Annuler'
+    }).then((result) => {
+      
+            // Proceed with deletion
+            $.ajax({
+                url: 'assets/php/news/delete_news.php',
+                type: 'POST',
+                data: { id: newsId },
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Supprimé !',
+                        text: 'L\'actualité a été supprimée.',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    loadNews(); // refresh the news list
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: 'Une erreur est survenue lors de la suppression.'
+                    });
+                }
+            });
+       
+    });
+});
+
     });
 </script>
