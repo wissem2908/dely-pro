@@ -21,7 +21,7 @@ $sql = "SELECT
             title,
             description,
             image,
-            link,
+            slug,
             DATE_FORMAT(date, '%d/%m/%Y') AS date_fr
         FROM news
         ORDER BY date DESC";
