@@ -49,60 +49,60 @@ include 'includes/header.php';
         <!-- [ page-header ] end -->
         <!-- [ Main Content ] start -->
         <div class="main-content">
-        
-                <div class="row">
 
-          
+            <div class="row">
 
-<div class="col-xl-8 mx-auto">
-    <div class="card shadow-sm">
-        <div class="card-header">
-            <h5 class="mb-0">
-                <i class="feather feather-file-text me-2"></i>
-                Nouvelle actualité
-            </h5>
-        </div>
 
-        <div class="card-body">
-            <form id="newsForm" enctype="multipart/form-data">
 
-                <!-- Title -->
-                <div class="mb-3">
-                    <label class="form-label">
-                        Titre <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" name="title" class="form-control" required>
-                </div>
+                <div class="col-xl-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="feather feather-file-text me-2"></i>
+                                Nouvelle actualité
+                            </h5>
+                        </div>
 
-                <!-- Date -->
-                <div class="mb-3">
+                        <div class="card-body">
+                            <form id="newsForm" enctype="multipart/form-data">
+
+                                <!-- Title -->
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        Titre <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" name="title" class="form-control" required>
+                                </div>
+
+                                <!-- Date -->
+                                <!-- <div class="mb-3">
                     <label class="form-label">
                         Date <span class="text-danger">*</span>
                     </label>
                     <input type="date" name="date" class="form-control" required>
-                </div>
+                </div> -->
 
-                <!-- Description -->
-                <div class="mb-3">
-                    <label class="form-label">
-                        Description <span class="text-danger">*</span>
-                    </label>
-                    <textarea name="description" id="description"  class="form-control"   style="min-height: 300px !important;" required></textarea>
-                </div>
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        Description <span class="text-danger">*</span>
+                                    </label>
+                                    <textarea name="description" id="description" class="form-control" style="min-height: 300px !important;"></textarea>
+                                </div>
 
-                <!-- Image -->
-              <div class="mb-3">
-    <label class="form-label">Image</label>
-    <input type="file" name="image" id="imageInput" class="form-control" accept="image/*">
-</div>
+                                <!-- Image -->
+                                <div class="mb-3">
+                                    <label class="form-label">Image</label>
+                                    <input type="file" name="image" id="imageInput" class="form-control" accept="image/*">
+                                </div>
 
-<!-- Preview -->
-<div class="mb-3">
-    <img id="imagePreview" src="" alt="Aperçu" style="display:none; max-width:300px; border-radius:5px; margin-top:10px;">
-</div>
+                                <!-- Preview -->
+                                <div class="mb-3">
+                                    <img id="imagePreview" src="" alt="Aperçu" style="display:none; max-width:300px; border-radius:5px; margin-top:10px;">
+                                </div>
 
-                <!-- Link -->
-                <!-- <div class="mb-3">
+                                <!-- Link -->
+                                <!-- <div class="mb-3">
                     <label class="form-label">
                         Lien (optionnel)
                     </label>
@@ -114,30 +114,30 @@ include 'includes/header.php';
                     </div>
                 </div> -->
 
-                <!-- Buttons -->
-                <div class="d-flex justify-content-end gap-2">
-                    <a href="news.php" class="btn btn-light">
-                        <i class="feather feather-x"></i> Annuler
-                    </a>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="feather feather-save"></i> Enregistrer
-                    </button>
+                                <!-- Buttons -->
+                                <div class="d-flex justify-content-end gap-2">
+                                    <a href="news.php" class="btn btn-light">
+                                        <i class="feather feather-x"></i> Annuler
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="feather feather-save"></i> Enregistrer
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
-            </form>
-        </div>
-    </div>
-</div>
 
 
-
-                    <!--! END: [Team Progress] !-->
-                </div>
+                <!--! END: [Team Progress] !-->
             </div>
-            <!-- [ Main Content ] end -->
         </div>
-        <!-- [ Footer ] start -->
-        <!-- <footer class="footer">
+        <!-- [ Main Content ] end -->
+    </div>
+    <!-- [ Footer ] start -->
+    <!-- <footer class="footer">
             <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
                 <span>Copyright ©</span>
                 <script>
@@ -151,7 +151,7 @@ include 'includes/header.php';
                 <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
             </div>
         </footer> -->
-        <!-- [ Footer ] end -->
+    <!-- [ Footer ] end -->
 </main>
 <!--! ================================================================ !-->
 <!--! [End] Main Content !-->
@@ -173,145 +173,93 @@ include('includes/footer.php');
 ?>
 
 <script>
+    let descriptionEditor;
+
 
     $(document).ready(function() {
-    $('#imageInput').on('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                $('#imagePreview').attr('src', e.target.result).show();
-            }
-            reader.readAsDataURL(file);
-        } else {
-            $('#imagePreview').hide();
-        }
-    });
+
+        ClassicEditor
+            .create(document.querySelector('#description'), {
+                toolbar: {
+                    items: [
+                        'heading', '|', 'bold', 'italic', 'underline', 'strikethrough',
+                        '|', 'link', 'bulletedList', 'numberedList', '|', 'undo', 'redo'
+                    ]
+                }
+            })
+            .then(editor => {
+                descriptionEditor = editor;
+                editor.ui.view.editable.element.style.minHeight = '400px';
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
 
-
-
-
-
-
-        $('#newsForm').on('submit', function(e) {
-        e.preventDefault(); // Prevent normal form submission
-
-        // Create FormData object
-        var formData = new FormData();
-
-        // Get text inputs
-        formData.append('title', $('input[name="title"]').val());
-        formData.append('date', $('input[name="date"]').val());
-        formData.append('link', $('input[name="link"]').val());
-
-        // Get CKEditor data
-        formData.append('description', CKEDITOR.instances.description.getData());
-
-        // Get image file if exists
-        const imageFile = $('#imageInput')[0].files[0];
-        if (imageFile) {
-            formData.append('image', imageFile);
-        }
-
-        // AJAX call to PHP
-        $.ajax({
-            url: 'assets/php/news/add_news.php', // your PHP script
-            type: 'POST',
-            data: formData,
-            processData: false, // Important for FormData
-            contentType: false, // Important for FormData
-            success: function(response) {
-                console.log(response); // For debugging
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Actualité enregistrée !',
-                    text: 'La news a été ajoutée avec succès.'
-                });
-
-                // Optional: reset form
-                $('#newsForm')[0].reset();
+        $('#imageInput').on('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').attr('src', e.target.result).show();
+                }
+                reader.readAsDataURL(file);
+            } else {
                 $('#imagePreview').hide();
-                CKEDITOR.instances.description.setData('');
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erreur',
-                    text: 'Une erreur est survenue lors de l\'enregistrement.'
-                });
             }
         });
+
+
+
+
+
+
+
+     $('#newsForm').on('submit', function(e) {
+    e.preventDefault();
+
+    const title = $('input[name="title"]').val().trim();
+    const description = descriptionEditor.getData().trim();
+    const imageFile = $('#imageInput')[0].files[0];
+
+    if (!title) {
+        Swal.fire({ icon: 'warning', title: 'Titre requis' });
+        return;
+    }
+
+    if (!description) {
+        Swal.fire({ icon: 'warning', title: 'Description requise' });
+        return;
+    }
+
+    if (!imageFile) {
+        Swal.fire({ icon: 'warning', title: 'Image requise' });
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('image', imageFile);
+
+    $.ajax({
+        url: 'assets/php/news/add_news.php',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            Swal.fire({ icon: 'success', title: 'Actualité enregistrée !' });
+
+            $('#newsForm')[0].reset();
+            descriptionEditor.setData('');
+            $('#imagePreview').hide();
+        },
+        error: function() {
+            Swal.fire({ icon: 'error', title: 'Erreur' });
+        }
     });
 });
 
-ClassicEditor
-    .create(document.querySelector('#description'), {
-        toolbar: {
-            items: [
-                'heading',
-                '|',
-                'bold',
-                'italic',
-                'underline',
-                'strikethrough',
-                'subscript',
-                'superscript',
-                '|',
-                'fontSize',
-                'fontFamily',
-                'fontColor',
-                'fontBackgroundColor',
-                '|',
-                'alignment',
-                '|',
-                'link',
-                'insertTable',
-                'imageUpload',
-                'mediaEmbed',
-                '|',
-                'bulletedList',
-                'numberedList',
-                'todoList',
-                '|',
-                'blockQuote',
-                'code',
-                'codeBlock',
-                '|',
-                'horizontalLine',
-                'specialCharacters',
-                '|',
-                'undo',
-                'redo'
-            ],
-            shouldNotGroupWhenFull: true
-        },
-
-        table: {
-            contentToolbar: [
-                'tableColumn',
-                'tableRow',
-                'mergeTableCells',
-                'tableProperties',
-                'tableCellProperties'
-            ]
-        },
-
-        image: {
-            toolbar: [
-                'imageTextAlternative',
-                'imageStyle:inline',
-                'imageStyle:block',
-                'imageStyle:side'
-            ]
-        }
-    })
-    .then(editor => {
-        // Hauteur grande de l’éditeur
-        editor.ui.view.editable.element.style.minHeight = '400px';
-    })
-    .catch(error => {
-        console.error(error);
     });
 </script>

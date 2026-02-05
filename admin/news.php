@@ -159,8 +159,8 @@ include('includes/footer.php');
                                 `<img src="assets/uploads/news_images/${item.image}" width="60" class="rounded">` :
                                 '<span class="text-muted">—</span>';
 
-                            let link = item.link ?
-                                `<a href="${item.link}" target="_blank"><i class="feather feather-eye"></i></a>` :
+                            let link = item.slug ?
+                                `<a href="news_detail.php?slug=${item.slug}" target="_blank"><i class="feather feather-eye"></i></a>` :
                                 '<span class="text-muted">—</span>';
 
                             html += `
