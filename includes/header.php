@@ -116,6 +116,7 @@
                         <a href="index.php#projet" class="nav-item nav-link">Projets</a>
                         <a href="index.php#news" class="nav-item nav-link">Actualités</a>
                         <a href="login.php" class="nav-item nav-link">Espace Client</a>
+                              <a href="appels_offres.php" class="nav-item nav-link">Appels d'offres</a>
                         <a href="index.php#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">
