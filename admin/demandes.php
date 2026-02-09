@@ -488,9 +488,18 @@ include('includes/footer.php');
           .removeClass()
           .addClass("badge " + badgeClass)
           .text(u.statut.replace("_", " "));
+// First, hide all step contents
+$('.wizard-content').addClass('d-none');
 
-
+ let activeStep = 1; // default
         /***************************** status ******************************* */
+          if (u.statut === 'en_attente') {
+                activeStep = 1;
+            } else if (u.statut === 'en_cours') {
+                activeStep = 2;
+            } else if (u.statut === 'valide' || u.statut === 'refuse') {
+                activeStep = 3;
+            }
         if (u.statut === 'en_cours') {
           $('.step[data-step="2"]').addClass('active');
 
@@ -522,6 +531,13 @@ include('includes/footer.php');
             .html('<i class="fa fa-times"></i>'); // set icon to X
         }
 
+   // Mark the active step
+            $('.step[data-step="' + activeStep + '"]').addClass('active');
+
+            // Show corresponding content
+            $('#step-' + activeStep).removeClass('d-none');
+
+        
         $('.step').click(function() {
           if (!$(this).hasClass('active')) return; // only active steps respond
           let step = $(this).data('step');
