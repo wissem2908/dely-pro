@@ -233,7 +233,7 @@ $(document).on('click', '#deleteNewsBtn', function() {
         confirmButtonText: 'Oui, supprimer',
         cancelButtonText: 'Annuler'
     }).then((result) => {
-      
+         if (result.value) {
             // Proceed with deletion
             $.ajax({
                 url: 'assets/php/news/delete_news.php',
@@ -256,7 +256,10 @@ $(document).on('click', '#deleteNewsBtn', function() {
                         text: 'Une erreur est survenue lors de la suppression.'
                     });
                 }
+
+
             });
+}
        
     });
 });

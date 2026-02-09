@@ -1,5 +1,3 @@
-
-
 <?php
 // index.php — start of file
 
@@ -177,6 +175,13 @@ include('includes/footer.php');
     $(document).ready(function() {
 
         function getClients() {
+
+        
+    // destroy existing DataTable first
+    if ($.fn.DataTable.isDataTable('#proposalList')) {
+        $('#proposalList').DataTable().destroy();
+    }
+
             $.ajax({
                 url: "assets/php/clients/get_clients.php",
                 method: "GET",
@@ -214,6 +219,10 @@ include('includes/footer.php');
 
                                      <td class="text-center">
                                         <div class="d-inline-flex gap-2">
+                                         <a class="avatar-text avatar-md " id="deleteClientBtn" href="#" data-id="${data[i].id}"
+                                                          >
+                                                        <i class="feather feather-trash"></i>
+                                                    </a>
                                                     <a class="avatar-text avatar-md edit-news" id="editNewsBtn" href="edit_client.php?id=${data[i].id}"
                                                           >
                                                         <i class="feather feather-edit-2"></i>
@@ -226,6 +235,8 @@ include('includes/footer.php');
                                 </tr>`
 
                     }
+
+                    $("#proposalList tbody").empty()
                     $("#proposalList tbody").append(list)
                     $("#proposalList").DataTable({
                         destroy: true,
@@ -240,6 +251,52 @@ include('includes/footer.php');
         }
 
         getClients()
+
+        
+    /**************************************** delete client **************************************** */
+$(document).on('click', '#deleteClientBtn', function(e) {
+
+    e.preventDefault();
+    e.stopPropagation(); // important if inside form/table
+Swal.fire({
+    title: "Êtes-vous sûr ?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Oui",
+    cancelButtonText: "Annuler"
+}).then((result) => {
+
+        console.log(result); // check if this fires
+
+        if (result.value) {
+
+
+
+
+        $.ajax({
+            url:'assets/php/clients/delete_client.php',
+            method:'POST',
+            data:{id:$(this).data('id')},
+            success:function(res){
+                    res = JSON.parse(res);
+                console.log(res.response); // check response
+                if(res.response=="success"){
+                   Swal.fire("Succès !", "Le client a été supprimé avec succès.", "success");
+                    getClients(); // refresh list
+                } else {
+                    Swal.fire("Error!", res.message, "error");
+                }
+            }
+
+        })
+
+
+           
+        }
+
+    });
+
+});
     })
     /************************************** end list clients *********************************************** */
 
@@ -348,5 +405,11 @@ include('includes/footer.php');
         updateBadge(currentSelect, 'refuse'); // ✅ badge turns red
         updateStatus(currentId, 'refuse', motif);
         $('#motifModal').modal('hide');
+
+
+
+
     });
+
+
 </script>

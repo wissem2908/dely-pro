@@ -116,24 +116,24 @@ include('includes/header.php');
       <div class="page-header-right ms-auto">
         <div class="page-header-right-items">
           <?php
-if($_SESSION['role'] === 'admin'){
+          if ($_SESSION['role'] === 'admin') {
 
-?>
-          <div class="d-flex ">
-            <a href="javascript:void(0)" onclick="goBack()" class="page-header-right-close-toggle">
-              <i class="feather-arrow-left me-2"></i>
-              <span>Retour</span>
-            </a>
-            <script>
-              function goBack() {
-                window.history.back();
-              }
-            </script>
-          </div>
+          ?>
+            <div class="d-flex ">
+              <a href="javascript:void(0)" onclick="goBack()" class="page-header-right-close-toggle">
+                <i class="feather-arrow-left me-2"></i>
+                <span>Retour</span>
+              </a>
+              <script>
+                function goBack() {
+                  window.history.back();
+                }
+              </script>
+            </div>
 
 
           <?php
-}
+          }
           ?>
         </div>
 
@@ -234,11 +234,11 @@ if($_SESSION['role'] === 'admin'){
                 <div class="row g-3">
                   <div class="col-md-3">
                     <label for="fiche_renseignement" class="form-label">Fiche de renseignement</label>
-                <a href="../doc/FICHE DE RENSEIGNEMENTS.doc" target="_blank"
-   class="form-control"
-   download>
-   Télécharger le document
-</a>
+                    <a href="../doc/FICHE DE RENSEIGNEMENTS.doc" target="_blank"
+                      class="form-control"
+                      download>
+                      Télécharger le document
+                    </a>
                     <!-- <input type="file" class="form-control" id="fiche_renseignement" name="fiche_renseignement" accept=".pdf,.doc,.docx"> -->
                   </div>
                   <div class="col-md-3">
