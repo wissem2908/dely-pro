@@ -234,7 +234,11 @@ if($_SESSION['role'] === 'admin'){
                 <div class="row g-3">
                   <div class="col-md-3">
                     <label for="fiche_renseignement" class="form-label">Fiche de renseignement</label>
-                    <a href="#" class="form-control"> Document à telechargé</a>
+                <a href="../doc/FICHE DE RENSEIGNEMENTS.doc" target="_blank"
+   class="form-control"
+   download>
+   Télécharger le document
+</a>
                     <!-- <input type="file" class="form-control" id="fiche_renseignement" name="fiche_renseignement" accept=".pdf,.doc,.docx"> -->
                   </div>
                   <div class="col-md-3">
