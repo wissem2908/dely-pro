@@ -89,6 +89,12 @@ $role = $_SESSION['role'] ?? null;
                             <span class="nxl-mtext">Actualités</span><span class="nxl-arrow"></span>
                         </a>
                     </li>
+                     <li class="nxl-item nxl-hasmenu">
+                        <a href="offers.php" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-download"></i></span>
+                            <span class="nxl-mtext">Appels d'offres</span><span class="nxl-arrow"></span>
+                        </a>
+                    </li>
 
                     <?php
                     } elseif ($role == "user") {
