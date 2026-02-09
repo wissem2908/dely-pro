@@ -1,5 +1,3 @@
-
-
 <?php
 // index.php — start of file
 
@@ -18,49 +16,60 @@ include 'includes/header.php';
 ?>
 
 
-    <main class="nxl-container">
-        <div class="nxl-content">
-            <!-- [ page-header ] start -->
-            <div class="page-header">
-                <div class="page-header-left d-flex align-items-center">
-                    <div class="page-header-title">
-                        <h5 class="m-b-10">Appels d'offres</h5>
-                    </div>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item">Appels d'offres</li>
-                    </ul>
+<main class="nxl-container">
+    <div class="nxl-content">
+        <!-- [ page-header ] start -->
+        <div class="page-header">
+            <div class="page-header-left d-flex align-items-center">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Appels d'offres</h5>
                 </div>
-                <div class="page-header-right ms-auto">
-                    <div class="page-header-right-items">
-                        <div class="d-flex d-md-none">
-                            <a href="javascript:void(0)" class="page-header-right-close-toggle">
-                                <i class="feather-arrow-left me-2"></i>
-                                <span>Back</span>
-                            </a>
-                        </div>
-
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item">Appels d'offres</li>
+                </ul>
+            </div>
+            <div class="page-header-right ms-auto">
+                <div class="page-header-right-items">
+                    <div class="d-flex d-md-none">
+                        <a href="javascript:void(0)" class="page-header-right-close-toggle">
+                            <i class="feather-arrow-left me-2"></i>
+                            <span>Back</span>
+                        </a>
                     </div>
 
                 </div>
+
             </div>
-            <!-- [ page-header ] end -->
-            <!-- [ Main Content ] start -->
-            <div class="main-content">
-                <div class="row">
-
-
-
-
-
-
-                    <!--! END: [Team Progress] !-->
-                </div>
-            </div>
-            <!-- [ Main Content ] end -->
         </div>
-        <!-- [ Footer ] start -->
-        <!-- <footer class="footer">
+        <!-- [ page-header ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="main-content">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0">Appels d'offres</h5>
+                                <a href="add_offers.php" class="btn btn-primary">Ajouter un appel d'offre</a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--! END: [Team Progress] !-->
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+    <!-- [ Footer ] start -->
+    <!-- <footer class="footer">
             <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
                 <span>Copyright ©</span>
                 <script>
@@ -74,23 +83,23 @@ include 'includes/header.php';
                 <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
             </div>
         </footer> -->
-        <!-- [ Footer ] end -->
-    </main>
-    <!--! ================================================================ !-->
-    <!--! [End] Main Content !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! BEGIN: Theme Customizer !-->
-    <!--! ================================================================ !-->
+    <!-- [ Footer ] end -->
+</main>
+<!--! ================================================================ !-->
+<!--! [End] Main Content !-->
+<!--! ================================================================ !-->
+<!--! ================================================================ !-->
+<!--! BEGIN: Theme Customizer !-->
+<!--! ================================================================ !-->
 
-    <!--! ================================================================ !-->
-    <!--! [End] Theme Customizer !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! Footer Script !-->
-    <!--! ================================================================ !-->
-    <!--! BEGIN: Vendors JS !-->
-   
+<!--! ================================================================ !-->
+<!--! [End] Theme Customizer !-->
+<!--! ================================================================ !-->
+<!--! ================================================================ !-->
+<!--! Footer Script !-->
+<!--! ================================================================ !-->
+<!--! BEGIN: Vendors JS !-->
+
 <?php
-include ('includes/footer.php');
+include('includes/footer.php');
 ?>
