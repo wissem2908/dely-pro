@@ -89,7 +89,7 @@
             <!-- <h1 class="display-4"> Offering the Best Consulting & Investa Services</h1> -->
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" id="offersContainer">
 
             <!-- Card 1 -->
             <div class="col-md-6">
@@ -142,3 +142,39 @@
 
 
 <?php include 'includes/footer.php'; ?>
+
+
+<script>
+
+    function getOffers(){
+
+        $.ajax({
+            url:'assets/php/get_offers.php',
+            method:'GET',
+            success:function(response){
+                console.log(response);
+                var data = JSON.parse(response);
+                var offersContainer = "";
+
+                for(var i = 0; i <data.length; i++){
+offersContainer +=`        <div class="col-md-6">
+                <div class="offer-card position-relative h-100">
+                    <div class="card-body d-flex flex-column">
+                     
+                        <h5 class="offer-title">${data[i].title}</h5>
+                        <p class="offer-description">${data[i].description}</p>
+                        <div class="offer-footer mt-auto">
+                            <span>Publié le: ${data[i].created_at}</span>
+                            <a href="admin/assets/uploads/appels_offres/${data[i].file_path}" class="download-btn" download>Télécharger</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+                }
+                $('#offersContainer').html(offersContainer);
+            }
+        })
+    }
+
+    getOffers()
+</script>
