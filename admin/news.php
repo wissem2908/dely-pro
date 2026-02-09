@@ -191,7 +191,7 @@ include('includes/footer.php');
                                 <td>${link}</td>
                                <td>
                                                 <div class="d-inline-flex gap-2">
-                                                    <button class="btn btn-sm btn-outline-primary edit-news"
+                                                    <button class="btn btn-sm btn-outline-primary edit-news" id="editNewsBtn"
                                                             data-id="${item.id}" title="Modifier">
                                                         <i class="feather feather-edit-2"></i>
                                                     </button>
@@ -260,6 +260,13 @@ $(document).on('click', '#deleteNewsBtn', function() {
        
     });
 });
+/*************************************** edit news *********************************************** */
 
+$(document).on('click', '#editNewsBtn', function(){
+    let newsId = $(this).data('id');
+    window.location.href = `news_edit.php?id=${newsId}`;
+})
+
+/************************************************************************************************** */
     });
 </script>

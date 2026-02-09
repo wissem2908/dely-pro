@@ -208,7 +208,7 @@ document.addEventListener("click", function (e) {
                         <label class="form-label">Situation matrimoniale</label>
                         <select class="form-select" name="situation">
                             <option value="Célibataire">Célibataire</option>
-                            <option value="Marié(e)" selected>Marié(e)</option>
+                            <option value="Marié(e)" >Marié(e)</option>
                             <option value="Divorcé(e)">Divorcé(e)</option>
                             <option value="Veuf(ve)">Veuf(ve)</option>
                         </select>

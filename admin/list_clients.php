@@ -213,9 +213,15 @@ include('includes/footer.php');
                             </td>
 
                                      <td class="text-center">
+                                        <div class="d-inline-flex gap-2">
+                                                    <a class="avatar-text avatar-md edit-news" id="editNewsBtn" href="edit_client.php?id=${data[i].id}"
+                                                          >
+                                                        <i class="feather feather-edit-2"></i>
+                                                    </a>
                                      <a href="demandes.php?id=${data[i].id}" class="avatar-text avatar-md d-inline-flex justify-content-center align-items-center">
                                                             <i class="feather feather-eye"></i>
                                                         </a>
+                                                        </div>
                                                         </td>
                                 </tr>`
 

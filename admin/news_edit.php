@@ -30,7 +30,7 @@ include 'includes/header.php';
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item">Ajouter une actualités</li>
+                    <li class="breadcrumb-item">Modifier l'actualité</li>
                 </ul>
             </div>
             <div class="page-header-right ms-auto">
@@ -59,13 +59,13 @@ include 'includes/header.php';
                         <div class="card-header">
                             <h5 class="mb-0">
                                 <i class="feather feather-file-text me-2"></i>
-                                Nouvelle actualité
+                                Modifier l'actualité
                             </h5>
                         </div>
 
                         <div class="card-body">
                             <form id="newsForm" enctype="multipart/form-data">
-
+                                <input type="hidden" name="news_id" id="news_id" value="<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>">
                                 <!-- Title -->
                                 <div class="mb-3">
                                     <label class="form-label">
@@ -212,7 +212,36 @@ include('includes/footer.php');
 
 
 
+        /********************************************** get News data ************************************************** */
+        function getNewsData() {
+            var newsId = $('#news_id').val();
+            $.ajax({
 
+                url: 'assets/php/news/get_news_by_id.php',
+                method: 'post',
+                data: {
+                    newsId: newsId
+                },
+                success: function(response) {
+
+                    console.log(response)
+                    var data = JSON.parse(response);
+                    if (data.length > 0) {
+                        var news = data[0];
+                        $('input[name="title"]').val(news.title);
+                        descriptionEditor.setData(news.description);
+                        if (news.image) {
+                            $('#imagePreview').attr('src', 'assets/uploads/news_images/' + news.image).show();
+                        }
+                    }
+                }
+
+            })
+
+
+        }
+
+        getNewsData()
 
 
         $('#newsForm').on('submit', function(e) {
@@ -220,6 +249,7 @@ include('includes/footer.php');
 
             const title = $('input[name="title"]').val().trim();
             const description = descriptionEditor.getData().trim();
+            const newsId = $('input[name="news_id"]').val().trim();
             const imageFile = $('#imageInput')[0].files[0];
 
             if (!title) {
@@ -250,9 +280,10 @@ include('includes/footer.php');
             formData.append('title', title);
             formData.append('description', description);
             formData.append('image', imageFile);
+            formData.append('news_id', newsId);
 
             $.ajax({
-                url: 'assets/php/news/add_news.php',
+                url: 'assets/php/news/edit_news.php',
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -263,9 +294,9 @@ include('includes/footer.php');
                         title: 'Actualité enregistrée !'
                     });
 
-                    $('#newsForm')[0].reset();
-                    descriptionEditor.setData('');
-                    $('#imagePreview').hide();
+                    // $('#newsForm')[0].reset();
+                    // descriptionEditor.setData('');
+                    // $('#imagePreview').hide();
                 },
                 error: function() {
                     Swal.fire({
@@ -275,6 +306,7 @@ include('includes/footer.php');
                 }
             });
         });
+
 
     });
 </script>
