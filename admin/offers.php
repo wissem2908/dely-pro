@@ -65,6 +65,34 @@ include 'includes/header.php';
 
                 <!--! END: [Team Progress] !-->
             </div>
+
+                        <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle" id="offersTable">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Titre</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Document</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- rempli par AJAX -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--! END: [Team Progress] !-->
+            </div>
         </div>
         <!-- [ Main Content ] end -->
     </div>
@@ -103,3 +131,44 @@ include 'includes/header.php';
 <?php
 include('includes/footer.php');
 ?>
+
+<script>
+
+    $(document).ready(function(){
+
+    function getOffers(){
+            $.ajax({
+                url:'assets/php/offers/get_offers.php',
+                method:'GET',
+                success:function(response){
+                    console.log(response)
+
+                    var data = JSON.parse(response);
+
+                    var offers="";
+
+                    for(var i=0; i< data.length; i++){
+                        offers+=`<tr>
+                        <td>${i+1}</td>
+                        <td>${data[i].title}</td>
+                        <td>${data[i].description}</td>
+                        <td>${data[i].date_fr}</td>
+                        <td class="text-center"><a href="${data[i].document}" target="_blank"><i class="feather feather-eye"></i></a></td>
+                        <td class="text-center">
+                          <div class="d-inline-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" onclick="editOffer(${data[i].id})">  <i class="feather feather-edit-2"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteOffer(${data[i].id})"><i class="feather feather-trash-2"></i></button>
+                            </div>
+                        </td>
+                        </tr>`
+                    }
+
+                    $('#offersTable tbody').html(offers);
+                }
+            })
+    }
+
+    getOffers()
+
+    })
+</script>

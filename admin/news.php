@@ -61,7 +61,6 @@ include 'includes/header.php';
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-12">
                     <div class="card shadow-sm">
                         <div class="card-body">
@@ -86,10 +85,6 @@ include 'includes/header.php';
                         </div>
                     </div>
                 </div>
-
-
-
-
 
                 <!--! END: [Team Progress] !-->
             </div>
