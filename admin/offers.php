@@ -153,11 +153,11 @@ include('includes/footer.php');
                         <td>${data[i].title}</td>
                         <td>${data[i].description}</td>
                         <td>${data[i].date_fr}</td>
-                        <td class="text-center"><a href="${data[i].document}" target="_blank"><i class="feather feather-eye"></i></a></td>
+                        <td class="text-center"><a href="./assets/uploads/appels_offres/${data[i].file_path}" target="_blank"><i class="feather feather-eye"></i></a></td>
                         <td class="text-center">
                           <div class="d-inline-flex gap-2">
-                            <button class="btn btn-sm btn-outline-primary" onclick="editOffer(${data[i].id})">  <i class="feather feather-edit-2"></i></button>
-                            <button class="btn btn-sm btn-outline-danger" onclick="deleteOffer(${data[i].id})"><i class="feather feather-trash-2"></i></button>
+                            <a class="btn btn-sm btn-outline-primary" href="edit_offers.php?id=${data[i].id}">  <i class="feather feather-edit-2"></i></a>
+                            <button class="btn btn-sm btn-outline-danger deleteOfferBtn" id="deleteOfferBtn" data-id="${data[i].id}"><i class="feather feather-trash-2"></i></button>
                             </div>
                         </td>
                         </tr>`
@@ -170,5 +170,52 @@ include('includes/footer.php');
 
     getOffers()
 
+
+    /********************************  DELETE OFfERS*********************************** */
+
+    $(document).on('click','#deleteOfferBtn',function(){
+        var id = $(this).data('id');
+
+    Swal.fire({
+        title: 'Êtes-vous sûr ?',
+        text: "Cette action supprimera définitivement l'appel d'offres !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6', // blue
+        cancelButtonColor: '#d33',     // red
+        confirmButtonText: 'Oui, supprimer',
+        cancelButtonText: 'Annuler'
+    }).then((result) => {
+         if (result.value) {
+            // Proceed with deletion
+            $.ajax({
+                url: 'assets/php/offers/delete_offers.php',
+                type: 'POST',
+                data: { id: id },
+                success: function(response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Supprimé !',
+                        text: 'L\'appel d\'offres a été supprimé.',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    getOffers(); // refresh the offers list
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: 'Une erreur est survenue lors de la suppression.'
+                    });
+                }
+
+
+            });
+}
+       
+    });
+
+    })
     })
 </script>

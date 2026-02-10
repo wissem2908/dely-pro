@@ -178,12 +178,13 @@
                 <div class="row g-4 text-center">
                     <div class="col-sm-4">
                         <div class="bg-primary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="counter-value fs-1 fw-bold text-dark" data-toggle="counter-up">2004</span>
-                            </div>
                              <div class="d-flex align-items-center justify-content-center">
                                 <p class="text-white mb-0">Année de création</p>
                              </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <span class="counter-value fs-1 fw-bold text-dark" data-toggle="counter-up">2004</span>
+                            </div>
+                            
                             
                         </div>
                     </div>
@@ -191,25 +192,27 @@
                     <div class="col-sm-4">
                         <div class="bg-dark rounded p-4">
                             <div class="d-flex align-items-center justify-content-center">
+                                  <p class="mb-0 text-white ">Capital social (DA)</p>
+                             </div>
+                            <div class="d-flex align-items-center justify-content-center">
                                 <span class="counter-value fs-1 fw-bold text-white" data-toggle="counter-up">762</span>
                                 <span class="fs-4 text-white ms-1">M</span>
                                 
                             </div>
-                             <div class="d-flex align-items-center justify-content-center">
-                                  <p class="mb-0 text-white ">Capital social (DA)</p>
-                             </div>
+                             
                           
                         </div>
                     </div>
 
                       <div class="col-sm-4">
                         <div class="bg-primary rounded p-4">
+                                <div class="d-flex align-items-center justify-content-center">
+                            <p class="text-white mb-0">Intervention</p>
+                            </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <h4 class=" fw-bold text-dark" >Territoire national</h4>
                             </div>
-                             <div class="d-flex align-items-center justify-content-center">
-                            <p class="text-white mb-0">Intervention</p>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
