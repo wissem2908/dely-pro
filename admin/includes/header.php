@@ -38,6 +38,17 @@ $role = $_SESSION['role'] ?? null;
 			<script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+        <!-- DataTables -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> -->
+
+<!-- Buttons extension -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+<!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+
+
+
 </head>
 
 <body>
@@ -65,7 +76,7 @@ $role = $_SESSION['role'] ?? null;
                     ?>
 
                      <li class="nxl-item nxl-hasmenu">
-                        <a href="#" class="nxl-link">
+                        <a href="index.php" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"></span>
                         </a>

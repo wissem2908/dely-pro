@@ -61,7 +61,7 @@ include 'includes/header.php';
 
                 <div class="col-lg-12">
                     <div class="card stretch stretch-full">
-                        <div class="card-body p-0">
+                        <div class="card-body ">
                             <div class="table-responsive">
                                 <table class="table table-hover" id="proposalList">
                                     <thead>
@@ -176,11 +176,11 @@ include('includes/footer.php');
 
         function getClients() {
 
-        
-    // destroy existing DataTable first
-    if ($.fn.DataTable.isDataTable('#proposalList')) {
-        $('#proposalList').DataTable().destroy();
-    }
+
+            // destroy existing DataTable first
+            if ($.fn.DataTable.isDataTable('#proposalList')) {
+                $('#proposalList').DataTable().destroy();
+            }
 
             $.ajax({
                 url: "assets/php/clients/get_clients.php",
@@ -242,8 +242,33 @@ include('includes/footer.php');
                         destroy: true,
                         order: [],
                         pageLength: 10,
-                        lengthMenu: [10, 20, 50, 100, 200, 500]
+                        lengthMenu: [10, 20, 50, 100, 200, 500],
+
+                        dom: 'Bfrtip',
+                        buttons: [{
+                            extend: 'excelHtml5',
+                            text: 'Exporter en Excel',
+                            className: 'btn btn-success btn-sm',
+                            title: 'Liste_des_clients',
+
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6],
+
+                                format: {
+                                    body: function(data, row, column, node) {
+
+                                        // Pour la colonne statut uniquement
+                                        if (column === 6) {
+                                            return $(node).find('.status-badge').text().trim();
+                                        }
+
+                                        return data;
+                                    }
+                                }
+                            }
+                        }]
                     });
+
 
 
                 }
@@ -252,51 +277,53 @@ include('includes/footer.php');
 
         getClients()
 
-        
-    /**************************************** delete client **************************************** */
-$(document).on('click', '#deleteClientBtn', function(e) {
 
-    e.preventDefault();
-    e.stopPropagation(); // important if inside form/table
-Swal.fire({
-    title: "Êtes-vous sûr ?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Oui",
-    cancelButtonText: "Annuler"
-}).then((result) => {
+        /**************************************** delete client **************************************** */
+        $(document).on('click', '#deleteClientBtn', function(e) {
 
-        console.log(result); // check if this fires
+            e.preventDefault();
+            e.stopPropagation(); // important if inside form/table
+            Swal.fire({
+                title: "Êtes-vous sûr ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Annuler"
+            }).then((result) => {
 
-        if (result.value) {
+                console.log(result); // check if this fires
 
-
+                if (result.value) {
 
 
-        $.ajax({
-            url:'assets/php/clients/delete_client.php',
-            method:'POST',
-            data:{id:$(this).data('id')},
-            success:function(res){
-                    res = JSON.parse(res);
-                console.log(res.response); // check response
-                if(res.response=="success"){
-                   Swal.fire("Succès !", "Le client a été supprimé avec succès.", "success");
-                    getClients(); // refresh list
-                } else {
-                    Swal.fire("Error!", res.message, "error");
+
+
+                    $.ajax({
+                        url: 'assets/php/clients/delete_client.php',
+                        method: 'POST',
+                        data: {
+                            id: $(this).data('id')
+                        },
+                        success: function(res) {
+                            res = JSON.parse(res);
+                            console.log(res.response); // check response
+                            if (res.response == "success") {
+                                Swal.fire("Succès !", "Le client a été supprimé avec succès.", "success");
+                                getClients(); // refresh list
+                            } else {
+                                Swal.fire("Error!", res.message, "error");
+                            }
+                        }
+
+                    })
+
+
+
                 }
-            }
 
-        })
+            });
 
-
-           
-        }
-
-    });
-
-});
+        });
     })
     /************************************** end list clients *********************************************** */
 
@@ -410,6 +437,4 @@ Swal.fire({
 
 
     });
-
-
 </script>
